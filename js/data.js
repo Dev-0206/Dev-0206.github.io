@@ -369,7 +369,7 @@ window.PROJECTS = [
           },
           {
             t: "note",
-            title: "What we tried first and why it failed",
+            title: "Early attempt: restamping by hand",
             text:
               "Our plan was to melt the grooved layer of a record with a heat source and press it with a 3D-printed stamp. Melting PVC needs controlled heat, ventilation, and safety gear that we did not have, because it releases toxic fumes. Our 3D-printed stamps failed structurally or did not match the model, and the printers we could use were too small for a 12-inch record. Real stampers cost more than $100 secondhand. We could not test the physical process, so we prototyped the part we could: the service.",
           },
@@ -720,7 +720,7 @@ window.PROJECTS = [
           },
           {
             t: "note",
-            title: "What I would fix",
+            title: "Design gaps",
             text:
               "The cards group flavors into three columns, but they are not filters. Someone who wants a flavor that is both vegan and nut-free cannot ask for it. The grey View Flavors buttons also have weak contrast against the pastel cards.",
           },
