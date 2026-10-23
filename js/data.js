@@ -478,7 +478,7 @@ window.PROJECTS = [
           },
           {
             t: "note",
-            title: "What this does not show",
+            title: "Limitations",
             text:
               "We never tested restamping, so the technical result, yield, and sound quality are unproven. The Wizard-of-Oz test showed that people want the service and what would stop them. It did not show that the process works. Six classmates is a small group.",
           },
