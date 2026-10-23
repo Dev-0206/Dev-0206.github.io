@@ -485,7 +485,7 @@ window.PROJECTS = [
           {
             t: "links",
             items: [
-              { label: "Source for the 705,549 record baseline: Vinyl Record Industry First Carbon Footprinting Report (VRMA, June 2024)", href: "https://vinylalliance.org/wp-content/uploads/2024/06/First-Carbon-Footprint-report_VRMA_VA_30-May-2024_final.pdf" },
+              { label: "705,549 record baseline: Vinyl Record Industry First Carbon Footprinting Report (VRMA, June 2024)", href: "https://vinylalliance.org/wp-content/uploads/2024/06/First-Carbon-Footprint-report_VRMA_VA_30-May-2024_final.pdf" },
             ],
           },
         ],
