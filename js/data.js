@@ -332,7 +332,7 @@ window.PROJECTS = [
             contain: true,
             src: "assets/img/ss-lca.webp",
             alt: "Life cycle assessment diagram of a vinyl record with columns for extraction, manufacturing, transportation and packaging, use, and end of life, connected by sticky notes for inputs and outputs.",
-            caption: "Our original life cycle assessment, mapped as inputs and outputs for each stage.",
+            caption: "Our original life cycle assessment, mapped as inputs and outputs for each stage. Click to zoom and pan.",
           },
         ],
       },
