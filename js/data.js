@@ -346,9 +346,9 @@ window.PROJECTS = [
             cols: 2,
             items: [
               { title: "Listeners", text: "Buyers mostly shop on artist websites or at independent record stores. They rarely throw records away, and they would use a reprint service only if it costs the same or less than a new record." },
-              { title: "A record store", text: "We spoke with Neptune Records. Stores already take in used records, so a collection program is realistic. They stock albums by popularity, quality, and demand, and they are open to sustainable records that work well." },
+              { title: "Local record store", text: "We spoke with Neptune Records. Stores already take in used records, so a collection program is realistic. They stock albums by popularity, quality, and demand, and they are open to sustainable records that work well." },
               { title: "Stakeholders", text: "The environment, musicians and listeners, record manufacturers, and music stores. Stores matter most, because the whole service depends on them." },
-              { title: "Risks we named", text: "Unsold stock, training store staff to handle records without damaging them, and the chance that large labels would resist a process that lowers demand for new pressings." },
+              { title: "Anticipated risks", text: "Unsold stock, training store staff to handle records without damaging them, and the chance that large labels would resist a process that lowers demand for new pressings." },
             ],
           },
         ],
