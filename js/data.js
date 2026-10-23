@@ -224,7 +224,7 @@ window.PROJECTS = [
       },
       {
         id: "results",
-        title: "Results",
+        title: "Participant feedback",
         blocks: [
           {
             t: "stats",
@@ -360,11 +360,11 @@ window.PROJECTS = [
           {
             t: "steps",
             items: [
-              { title: "Measure the problem", text: "Life cycle assessment and impact assessment showed where the emissions sit." },
-              { title: "Talk to people", text: "Listener interviews and a record store conversation shaped the service." },
-              { title: "Try to make it", text: "We tried to restamp a record by hand. It did not work." },
-              { title: "Simulate the service", text: "We changed the prototype to show the service experience instead of the factory step." },
-              { title: "Test with classmates", text: "Six peers walked through the service in a Wizard-of-Oz test." },
+              { title: "Quantify the impact", text: "Life cycle assessment and impact assessment showed where the emissions sit." },
+              { title: "Interview listeners and stores", text: "Listener interviews and a record store conversation shaped the service." },
+              { title: "Prototype the process", text: "We tried to restamp a record by hand. It did not work." },
+              { title: "Pivot to a service prototype", text: "We changed the prototype to show the service experience instead of the factory step." },
+              { title: "Wizard-of-Oz test", text: "Six peers walked through the service in a Wizard-of-Oz test." },
             ],
           },
           {
@@ -620,8 +620,8 @@ window.PROJECTS = [
             t: "cards",
             cols: 2,
             items: [
-              { title: "Critique on the logo", text: "My first logo was a take-out cup, and the critique was that it did not work. I redrew it as a cone with a clearer swirl of ice cream, a crescent moon topping, and a bolder wordmark. I refined the logo three times in total." },
-              { title: "Critique on the final screen", text: "Feedback said the colorway was not making the message clear. I revised the colors for the final design so the categories read faster." },
+              { title: "Logo critique", text: "My first logo was a take-out cup, and the critique was that it did not work. I redrew it as a cone with a clearer swirl of ice cream, a crescent moon topping, and a bolder wordmark. I refined the logo three times in total." },
+              { title: "Final screen critique", text: "Feedback said the colorway was not making the message clear. I revised the colors for the final design so the categories read faster." },
             ],
           },
           {
@@ -699,7 +699,7 @@ window.PROJECTS = [
       },
       {
         id: "results",
-        title: "Results",
+        title: "Validation",
         blocks: [
           {
             t: "note",
@@ -804,7 +804,7 @@ window.PROJECTS = [
           },
           {
             t: "note",
-            title: "What is live and what is not",
+            title: "Live data and estimates",
             text:
               "Flight and hotel prices are estimates stored in a CSV file in the repo. Only the weather comes from a live API. A real version would need live price data.",
           },
