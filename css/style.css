@@ -462,3 +462,5 @@ noscript .wrap { padding-block: 20px; }
 
 .cs-body ul.stickies, .cs-body ul.legend { padding: 0; margin: 0; list-style: none; }
 .cs-body ul.stickies > li, .cs-body ul.legend > li { margin: 0; }
+
+.contact-head { margin: 0 0 14px; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.9rem, 3.8vw, 2.9rem); line-height: 1.04; letter-spacing: -0.01em; max-width: 18ch; text-wrap: balance; }
