@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dev Gandhi | UX + Physical Systems Design</title>
+  <meta name="description" content="Dev Gandhi is a UX Design student at SCAD. Case studies in research, sustainable product design, visual systems, and development. Seeking a Summer 2027 design internship.">
+  <meta name="theme-color" content="#f3efe7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12100d" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph. URLs assume the site lives at https://dev-0206.github.io/ . Change them if you use another address. -->
+  <link rel="canonical" href="https://dev-0206.github.io/">
+  <meta property="og:url" content="https://dev-0206.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dev Gandhi | UX + Physical Systems Design">
+  <meta property="og:description" content="Four case studies in UX research, sustainable product design, visual systems, and development.">
+  <meta property="og:image" content="https://dev-0206.github.io/assets/og.png">
+  <meta property="og:image:alt" content="Dev Gandhi. UX + Physical Systems.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/instrument-serif-latin-400-normal.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Dev Gandhi, home"><span class="brand-dot" aria-hidden="true"></span>Dev Gandhi</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a class="hide-sm" href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+        <button class="icon-btn" id="theme" type="button" aria-label="Switch color theme" title="Switch color theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div id="top"></div>
+    <section class="hero" aria-labelledby="name">
+      <div class="wrap">
+        <p class="hero-kicker"><span class="pill" id="h-pos"></span><span id="h-focus"></span></p>
+        <h1 id="name"><span id="h-first">Dev</span> <span class="l2" id="h-last">Gandhi</span></h1>
+        <div class="hero-grid">
+          <p class="hero-statement" id="h-statement"></p>
+          <div class="hero-side">
+            <p id="h-status"></p>
+            <div class="btn-row">
+              <a class="btn primary" href="#work">View work</a>
+              <a class="btn" id="h-resume" href="assets/Dev_Gandhi_Resume.pdf" download>Download resume</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="work-h">
+      <div class="wrap">
+        <div class="sec-head"><h2 id="work-h">Selected work</h2><span class="count" id="work-count"></span></div>
+        <div class="work-grid" id="work-grid"></div>
+        <noscript><p>The case studies need JavaScript to open. Email me and I will send a PDF.</p></noscript>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-h">
+      <div class="wrap">
+        <div class="sec-head"><h2 id="about-h">About</h2></div>
+        <div class="about-grid">
+          <div class="about-copy" id="about-copy"></div>
+          <dl class="facts" id="about-facts"></dl>
+        </div>
+      </div>
+    </section>
+
+    <div class="band">
+      <section id="resume" aria-labelledby="resume-h">
+        <div class="wrap">
+          <div class="sec-head"><h2 id="resume-h">Resume</h2></div>
+          <div class="two-col">
+            <p>One page. Education, projects, experience, and skills.</p>
+            <div class="btn-row">
+              <a class="btn primary" id="r-dl" href="assets/Dev_Gandhi_Resume.pdf" download>Download PDF</a>
+              <a class="btn" id="r-open" href="assets/Dev_Gandhi_Resume.pdf" target="_blank" rel="noopener">Open in a new tab</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" aria-labelledby="contact-h">
+        <div class="wrap">
+          <div class="sec-head"><h2 id="contact-h">Contact</h2></div>
+          <div class="two-col">
+            <div>
+              <p>I'm looking for a Summer 2027 design internship. Write to me about roles, projects, or anything on this site.</p>
+              <div class="email-row">
+                <span class="email-text" id="c-email"></span>
+                <button class="btn" id="c-copy" type="button">Copy email</button>
+                <span class="toast" id="c-toast" role="status" aria-live="polite"></span>
+              </div>
+            </div>
+            <div class="links" id="c-links"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap"><span>Dev Gandhi, <span id="year"></span></span><span>UX Design, SCAD</span></div>
+  </footer>
+
+  <div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="case-title" hidden></div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+    <button class="close" type="button" id="lb-close">Close</button>
+    <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
