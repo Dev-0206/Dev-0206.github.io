@@ -327,12 +327,6 @@ kbd { font: inherit; font-size: .78rem; border: 1px solid var(--line); border-ra
 .case-next .arrow-big path { stroke: var(--accent); }
 
 /* ---------- Lightbox ---------- */
-.lightbox { position: fixed; inset: 0; z-index: 80; background: rgba(8, 10, 14, .92); display: none; place-items: center; padding: 20px; }
-.lightbox.open { display: grid; }
-.lightbox figure { margin: 0; max-width: min(1400px, 100%); max-height: 100%; display: grid; gap: 12px; }
-.lightbox img { max-width: 100%; max-height: calc(100vh - 120px); object-fit: contain; margin-inline: auto; background: #fff; border-radius: 8px; }
-.lightbox figcaption { color: #ece7dc; text-align: center; font-size: .95rem; }
-.lightbox .close { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); background: #fff; color: #15130f; border: 0; border-radius: 999px; padding: 10px 16px; font-weight: 700; cursor: pointer; }
 
 noscript .wrap { padding-block: 20px; }
 
@@ -365,3 +359,21 @@ noscript .wrap { padding-block: 20px; }
 .quote p { font-style: italic; font-size: clamp(1.5rem, 2.6vw, 1.9rem); line-height: 1.22; letter-spacing: 0; }
 .case-next strong { font-weight: 400; font-size: clamp(2.6rem, 8.5vw, 6rem); letter-spacing: -0.025em; }
 .tbl thead th { font-weight: 500; }
+
+/* ---------- Image viewer (pan and zoom) ---------- */
+.lightbox { position: fixed; inset: 0; z-index: 80; background: #0a0907; display: none; flex-direction: column; }
+.lightbox.open { display: flex; }
+.lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding: max(12px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 12px max(16px, env(safe-area-inset-left, 0px)); }
+.lb-hint { color: #b3ac9d; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; }
+.lb-tools { display: flex; gap: 8px; margin-left: auto; }
+.lb-tools button { min-width: 44px; min-height: 44px; padding: 0 14px; background: #ece7dc; color: #15130f; border: 0; border-radius: 999px; font: 600 1rem var(--font-body); cursor: pointer; }
+.lb-tools button:hover { background: #fff; }
+.lb-tools button:focus-visible, .lb-stage:focus-visible { outline: 3px solid #8fa0ff; outline-offset: 2px; }
+.lb-stage { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; }
+.lb-stage:active { cursor: grabbing; }
+.lb-stage img { position: absolute; left: 0; top: 0; max-width: none; transform-origin: 0 0; background: #fff; will-change: transform; -webkit-user-drag: none; }
+.lb-cap { margin: 0; color: #ece7dc; font-size: .92rem; text-align: center; padding: 10px max(16px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); max-height: 22vh; overflow: auto; }
+.contact-line { max-width: 52ch; }
+.contact-line a { text-underline-offset: 3px; }
+.email-row { margin-top: 18px; }

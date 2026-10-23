@@ -96,9 +96,8 @@
           <div class="sec-head"><h2 id="contact-h">Contact</h2></div>
           <div class="two-col">
             <div>
-              <p>I'm looking for a Summer 2027 design internship. Write to me about roles, projects, or anything on this site.</p>
+              <p class="contact-line">I'm looking for a Summer 2027 design internship. Email is the best way to reach me: <a id="c-email" href="mailto:gandhi.devv@gmail.com">gandhi.devv@gmail.com</a>. I'm also on <a id="c-li" href="https://www.linkedin.com/in/dev-gandhi-a359682a1" target="_blank" rel="noopener">LinkedIn</a>.</p>
               <div class="email-row">
-                <span class="email-text" id="c-email"></span>
                 <button class="btn" id="c-copy" type="button">Copy email</button>
                 <span class="toast" id="c-toast" role="status" aria-live="polite"></span>
               </div>
@@ -115,9 +114,20 @@
   </footer>
 
   <div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="case-title" hidden></div>
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
-    <button class="close" type="button" id="lb-close">Close</button>
-    <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lb-bar">
+      <span class="lb-hint">Drag to move. Scroll or pinch to zoom.</span>
+      <div class="lb-tools">
+        <button type="button" id="lb-out" aria-label="Zoom out">&minus;</button>
+        <button type="button" id="lb-fit" aria-label="Fit image to screen">Fit</button>
+        <button type="button" id="lb-in" aria-label="Zoom in">+</button>
+        <button type="button" id="lb-close" class="close">Close</button>
+      </div>
+    </div>
+    <div class="lb-stage" id="lb-stage" tabindex="0" role="img" aria-label="Zoomable image. Use plus and minus to zoom, arrow keys to move, 0 to fit.">
+      <img id="lb-img" alt="" draggable="false">
+    </div>
+    <p class="lb-cap" id="lb-cap"></p>
   </div>
 
   <script src="js/data.js"></script>

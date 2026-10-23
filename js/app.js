@@ -67,11 +67,11 @@
   var af = $("#about-facts");
   S.about.facts.forEach(function (f) { af.appendChild(el("div", null, [el("dt", { text: f.label }), el("dd", { text: f.value })])); });
 
-  $("#c-email").textContent = S.email;
+  $("#c-email").textContent = S.email; $("#c-email").setAttribute("href", "mailto:" + S.email);
+  $("#c-li").setAttribute("href", S.linkedin);
   var links = $("#c-links");
   links.appendChild(el("a", { class: "btn", href: S.linkedin, target: "_blank", rel: "noopener", text: "LinkedIn" }));
   links.appendChild(el("a", { class: "btn", href: S.github, target: "_blank", rel: "noopener", text: "GitHub" }));
-  links.appendChild(el("a", { class: "btn", href: "mailto:" + S.email, text: "Email" }));
   $("#c-copy").addEventListener("click", function () {
     var t = $("#c-toast");
     function done(msg) { t.textContent = msg; t.classList.add("on"); setTimeout(function () { t.classList.remove("on"); }, 2200); }
@@ -256,20 +256,84 @@
     go(a.getAttribute("href"));
   });
 
-  /* ---------- Lightbox ---------- */
-  var lb = $("#lightbox"), lbImg = $("#lb-img"), lbCap = $("#lb-cap"), lbFrom = null;
+  /* ---------- Lightbox: pan and zoom (drag, wheel, pinch, buttons, keys) ---------- */
+  var lb = $("#lightbox"), lbStage = $("#lb-stage"), lbImg = $("#lb-img"), lbCap = $("#lb-cap"), lbFrom = null;
+  var Z = { s: 1, fit: 1, min: 1, max: 4, x: 0, y: 0, w: 0, h: 0 }, ptrs = {}, pinch = null, drag = null, lastTap = 0;
+  function clampZ() {
+    var sw = lbStage.clientWidth, sh = lbStage.clientHeight, iw = Z.w * Z.s, ih = Z.h * Z.s;
+    Z.x = iw <= sw ? (sw - iw) / 2 : Math.min(0, Math.max(sw - iw, Z.x));
+    Z.y = ih <= sh ? (sh - ih) / 2 : Math.min(0, Math.max(sh - ih, Z.y));
+  }
+  function paint() { clampZ(); lbImg.style.transform = "translate(" + Z.x + "px," + Z.y + "px) scale(" + Z.s + ")"; }
+  function fitZ() {
+    Z.w = lbImg.naturalWidth || 1; Z.h = lbImg.naturalHeight || 1;
+    var sw = lbStage.clientWidth, sh = lbStage.clientHeight;
+    Z.fit = Math.min(sw / Z.w, sh / Z.h); Z.min = Z.fit; Z.max = Math.max(Z.fit * 8, 4);
+    Z.s = Z.fit; Z.x = 0; Z.y = 0; paint();
+  }
+  function zoomAt(ns, cx, cy) {
+    ns = Math.min(Z.max, Math.max(Z.min, ns));
+    var k = ns / Z.s;
+    Z.x = cx - (cx - Z.x) * k; Z.y = cy - (cy - Z.y) * k; Z.s = ns; paint();
+  }
+  function stagePt(e) { var r = lbStage.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+  function zoomCenter(f) { zoomAt(Z.s * f, lbStage.clientWidth / 2, lbStage.clientHeight / 2); }
   function openLightbox(src, alt, cap) {
     lbFrom = document.activeElement;
-    lbImg.src = src; lbImg.alt = alt || ""; lbCap.textContent = cap || "";
+    lbImg.onload = fitZ;
+    lbImg.alt = alt || ""; lbCap.textContent = cap || "";
+    lbStage.setAttribute("aria-label", (alt ? alt + " " : "") + "Zoomable image. Use plus and minus to zoom, arrow keys to move, 0 to fit.");
     lb.classList.add("open");
+    lbImg.src = src;
+    if (lbImg.complete && lbImg.naturalWidth) fitZ();
     $("#lb-close").focus();
   }
   function closeLightbox() {
-    lb.classList.remove("open"); lbImg.removeAttribute("src");
+    lb.classList.remove("open"); lbImg.removeAttribute("src"); lbImg.style.transform = ""; ptrs = {}; pinch = null; drag = null;
     if (lbFrom && document.body.contains(lbFrom)) lbFrom.focus({ preventScroll: true });
   }
   $("#lb-close").addEventListener("click", closeLightbox);
-  lb.addEventListener("click", function (e) { if (e.target === lb) closeLightbox(); });
+  $("#lb-in").addEventListener("click", function () { zoomCenter(1.5); });
+  $("#lb-out").addEventListener("click", function () { zoomCenter(1 / 1.5); });
+  $("#lb-fit").addEventListener("click", fitZ);
+  window.addEventListener("resize", function () { if (lb.classList.contains("open")) { var atFit = Math.abs(Z.s - Z.fit) < 1e-6; var keep = Z.s; fitZ(); if (!atFit) { Z.s = Math.min(Z.max, Math.max(Z.min, keep)); paint(); } } });
+  lbStage.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    var p = stagePt(e), f = Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0018));
+    zoomAt(Z.s * f, p.x, p.y);
+  }, { passive: false });
+  lbStage.addEventListener("pointerdown", function (e) {
+    lbStage.setPointerCapture(e.pointerId); ptrs[e.pointerId] = stagePt(e);
+    var ids = Object.keys(ptrs);
+    if (ids.length === 2) {
+      var a = ptrs[ids[0]], b = ptrs[ids[1]];
+      pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), s: Z.s }; drag = null;
+    } else if (ids.length === 1) {
+      drag = { x: ptrs[ids[0]].x, y: ptrs[ids[0]].y, ox: Z.x, oy: Z.y };
+      var now = Date.now();
+      if (now - lastTap < 320) { var p = stagePt(e); if (Z.s > Z.fit * 1.2) fitZ(); else zoomAt(Math.max(Z.fit * 2.5, 1.5), p.x, p.y); lastTap = 0; }
+      else lastTap = now;
+    }
+  });
+  lbStage.addEventListener("pointermove", function (e) {
+    if (!ptrs[e.pointerId]) return;
+    ptrs[e.pointerId] = stagePt(e);
+    var ids = Object.keys(ptrs);
+    if (ids.length === 2 && pinch) {
+      var a = ptrs[ids[0]], b = ptrs[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y);
+      zoomAt(pinch.s * d / pinch.d, (a.x + b.x) / 2, (a.y + b.y) / 2);
+    } else if (drag) {
+      var p = ptrs[e.pointerId];
+      Z.x = drag.ox + (p.x - drag.x); Z.y = drag.oy + (p.y - drag.y); paint();
+    }
+  });
+  function endPtr(e) {
+    delete ptrs[e.pointerId]; pinch = null;
+    var ids = Object.keys(ptrs);
+    drag = ids.length === 1 ? { x: ptrs[ids[0]].x, y: ptrs[ids[0]].y, ox: Z.x, oy: Z.y } : null;
+  }
+  lbStage.addEventListener("pointerup", endPtr);
+  lbStage.addEventListener("pointercancel", endPtr);
 
   /* ---------- Keyboard ---------- */
   document.addEventListener("keydown", function (e) {
@@ -280,7 +344,18 @@
       else if (caseEl.classList.contains("open")) { go("#/"); e.preventDefault(); }
       return;
     }
-    if (typing || lb.classList.contains("open") || !caseEl.classList.contains("open")) return;
+    if (lb.classList.contains("open") && !typing) {
+      var step = 60;
+      if (e.key === "+" || e.key === "=") { zoomCenter(1.25); e.preventDefault(); }
+      else if (e.key === "-" || e.key === "_") { zoomCenter(0.8); e.preventDefault(); }
+      else if (e.key === "0") { fitZ(); e.preventDefault(); }
+      else if (e.key === "ArrowLeft") { Z.x += step; paint(); e.preventDefault(); }
+      else if (e.key === "ArrowRight") { Z.x -= step; paint(); e.preventDefault(); }
+      else if (e.key === "ArrowUp") { Z.y += step; paint(); e.preventDefault(); }
+      else if (e.key === "ArrowDown") { Z.y -= step; paint(); e.preventDefault(); }
+      return;
+    }
+    if (typing || !caseEl.classList.contains("open")) return;
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
       var cur = /^#\/work\/([\w-]+)/.exec(lastRouted || location.hash || "");
       var p = cur && bySlug[cur[1]];
