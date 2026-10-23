@@ -26,7 +26,7 @@ window.SITE = {
   status:
     "BFA UX Design at SCAD. Transferred from UW Human Centered Design & Engineering. Looking for a Summer 2027 design internship.",
   email: "gandhi.devv@gmail.com",
-  linkedin: "https://www.linkedin.com/in/dev-gandhi-a359682a1",
+  linkedin: "https://www.linkedin.com/in/devgandhii",
   github: "https://github.com/Dev-0206",
   resume: "assets/Dev_Gandhi_Resume.pdf",
   about: {
