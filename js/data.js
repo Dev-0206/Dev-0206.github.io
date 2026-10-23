@@ -326,13 +326,14 @@ window.PROJECTS = [
             text:
               "We started from a life cycle assessment of a 12-inch, 140 g record across five stages: extraction, manufacturing, transport and packaging, use, and end of life. Manufacturing and end of life gave us the biggest openings.",
           },
+          { t: "stages" },
           {
             t: "fig",
             wide: true,
             contain: true,
             src: "assets/img/ss-lca.webp",
             alt: "Life cycle assessment diagram of a vinyl record with columns for extraction, manufacturing, transportation and packaging, use, and end of life, connected by sticky notes for inputs and outputs.",
-            caption: "Our original life cycle assessment, mapped as inputs and outputs for each stage. Click to zoom and pan.",
+            caption: "The full life cycle board, with every input and output on one page. Click to zoom and pan.",
           },
         ],
       },
@@ -466,6 +467,7 @@ window.PROJECTS = [
             ],
             caption: "Impact assessment for 705,549 records.",
           },
+          { t: "sens" },
           {
             t: "cards",
             cols: 2,
@@ -902,3 +904,100 @@ window.PROJECTS = [
     ],
   },
 ];
+
+/* Second Spin life cycle data. Stickies come from our Miro board (LCA_Fall 2025). */
+window.LCA = {
+  legend: [
+    { k: "mat", label: "Material or energy going in" },
+    { k: "em", label: "Emission or waste" },
+    { k: "prod", label: "Product or outcome" },
+  ],
+  stages: [
+    {
+      name: "Extraction",
+      blurb: "The raw materials needed before a record can be made: salt, oil, gas, water, lead, calcium, and zinc.",
+      inputs: [
+        { t: "Electricity, machinery, labor, and fossil fuels", k: "mat" },
+        { t: "Salt for chlorine in making PVC", k: "mat" },
+        { t: "Oil to make ethylene", k: "mat" },
+        { t: "Water for cooling and processing", k: "mat" },
+        { t: "Lead, calcium, and zinc compounds", k: "mat" },
+        { t: "Labor", k: "mat" },
+      ],
+      outputs: [
+        { t: "Toxic chloride compounds", k: "em" },
+        { t: "Wastewater and chemicals", k: "em" },
+        { t: "PVC compound", k: "prod" },
+        { t: "Stabilizers to preserve PVC", k: "mat" },
+      ],
+      change: "In the model, reprinted records need no new PVC. New PVC used goes from 84,948 kg to 0 kg.",
+    },
+    {
+      name: "Manufacturing",
+      focus: true,
+      blurb: "Pressing a record needs PVC, pigments, paper, metal stampers, and a lot of electricity. This is where most of the emissions are.",
+      inputs: [
+        { t: "Electricity to power machinery", k: "mat" },
+        { t: "PVC compound", k: "mat" },
+        { t: "Pigments and dyes", k: "mat" },
+        { t: "Metal stampers", k: "mat" },
+        { t: "Paper or cardboard sticker", k: "mat" },
+        { t: "Labor", k: "mat" },
+      ],
+      outputs: [
+        { t: "Scope 2 electricity emissions: 182.295 tonnes CO2e (location-based) for 1,706,860 records, from the industry carbon report", k: "em" },
+        { t: "93% is turned into records, 7% is reground", k: "prod" },
+        { t: "Print and designs", k: "prod" },
+        { t: "Finished vinyl", k: "prod" },
+      ],
+      change: "Reprinting collected records replaces making new PVC compound. CO2 from the PVC compound falls from 233,862 kg to 1,623 kg in the model.",
+    },
+    {
+      name: "Transport and packaging",
+      blurb: "Records must be packaged carefully, which uses more material than we first expected.",
+      inputs: [
+        { t: "Inner sleeve", k: "mat" },
+        { t: "Paperboard outer sleeve", k: "mat" },
+        { t: "Plastic shrinkwrap", k: "mat" },
+        { t: "Transportation fuel", k: "mat" },
+        { t: "Finished record", k: "mat" },
+      ],
+      outputs: [
+        { t: "Waste and emissions: 21 g CO2e per paper sleeve or 24 g per poly sleeve", k: "em" },
+        { t: "Wastage in trim and emissions: 158 g CO2e per outer sleeve", k: "em" },
+        { t: "Waste and emissions: 7.7 g CO2e per record", k: "em" },
+        { t: "Carbon emissions from transportation", k: "em" },
+        { t: "Packaged album", k: "prod" },
+      ],
+      change: "Sleeves and covers switch to 100% recycled paper, so paper CO2 goes from 126,293 kg to 69,461 kg. Collecting records from stores adds about 702 kg a year, which the model does not subtract.",
+    },
+    {
+      name: "Use",
+      blurb: "Record players need electricity. It is not a big problem, but it is still part of the picture.",
+      inputs: [
+        { t: "Electricity to power a turntable, amplifier, and speaker. About 0.017 kWh for one hour of listening, using a system that draws 17 watts", k: "mat" },
+        { t: "Labor", k: "mat" },
+      ],
+      outputs: [
+        { t: "Scope 2 carbon emissions from electricity", k: "em" },
+        { t: "Repaired vinyl", k: "prod" },
+      ],
+      change: "No change is modeled for this stage.",
+    },
+    {
+      name: "End of life",
+      focus: true,
+      blurb: "A record ends up in one of two places: landfill or a second owner. This and manufacturing became our focus.",
+      inputs: [
+        { t: "Used record", k: "mat" },
+        { t: "Packaging", k: "mat" },
+      ],
+      outputs: [
+        { t: "Landfill", k: "em" },
+        { t: "Sold secondhand", k: "prod" },
+      ],
+      change: "Damaged and unwanted records are collected through record stores and reprinted instead of going to landfill.",
+    },
+  ],
+  model: { records: 705549, current: 360161, paper: 69461, assumedG: 2.3, transport: 702 },
+};

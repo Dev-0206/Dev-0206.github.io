@@ -101,8 +101,128 @@
     return f;
   }
 
+
+  /* ---------- Second Spin interactive model ---------- */
+  var LCA = window.LCA;
+  function fmt(n) { return Math.round(n).toLocaleString("en-US"); }
+  var KIND_LABEL = { mat: "Material or energy", em: "Emission or waste", prod: "Product or outcome" };
+
+  function stagesBlock() {
+    var cur = 0, tabs = [];
+    var root = el("div", { class: "stages" });
+    root.appendChild(el("h3", { class: "model-h", id: "stages-h", text: "Explore the life cycle" }));
+    root.appendChild(el("p", { class: "model-lead", text: "Pick a stage to see what goes in, what comes out, and what Second Spin changes." }));
+    var list = el("div", { class: "stage-tabs", role: "tablist", "aria-labelledby": "stages-h" });
+    var panel = el("div", { class: "stage-panel", role: "tabpanel", id: "stage-panel", tabindex: "0" });
+    LCA.stages.forEach(function (st, i) {
+      var t = el("button", { class: "stage-tab", type: "button", role: "tab", id: "stage-tab-" + i, "aria-controls": "stage-panel", "aria-selected": "false", tabindex: "-1" }, [
+        el("span", { class: "sn", text: "0" + (i + 1) }),
+        el("span", { class: "nm", text: st.name }),
+        st.focus ? el("span", { class: "fc", text: "Our focus" }) : null,
+      ]);
+      t.addEventListener("click", function () { select(i, false); });
+      t.addEventListener("keydown", function (e) {
+        var k = e.key, n = LCA.stages.length, j = null;
+        if (k === "ArrowRight" || k === "ArrowDown") j = (cur + 1) % n;
+        else if (k === "ArrowLeft" || k === "ArrowUp") j = (cur + n - 1) % n;
+        else if (k === "Home") j = 0;
+        else if (k === "End") j = n - 1;
+        if (j !== null) { e.preventDefault(); e.stopPropagation(); select(j, true); }
+      });
+      tabs.push(t); list.appendChild(t);
+    });
+    function stickies(items) {
+      return el("ul", { class: "stickies" }, items.map(function (x) {
+        return el("li", { class: "sticky " + x.k }, [el("span", { class: "vh", text: KIND_LABEL[x.k] + ": " }), document.createTextNode(x.t)]);
+      }));
+    }
+    function select(i, focus) {
+      cur = i; var st = LCA.stages[i];
+      tabs.forEach(function (t, j) { var on = j === i; t.setAttribute("aria-selected", on ? "true" : "false"); t.tabIndex = on ? 0 : -1; });
+      panel.setAttribute("aria-labelledby", "stage-tab-" + i);
+      panel.textContent = "";
+      panel.appendChild(el("h4", { class: "stage-title", text: st.name }));
+      panel.appendChild(el("p", { class: "stage-blurb", text: st.blurb }));
+      panel.appendChild(el("div", { class: "io" }, [
+        el("div", { role: "group", "aria-label": "Goes in" }, [el("h5", { text: "Goes in" }), stickies(st.inputs)]),
+        el("span", { class: "io-arrow", "aria-hidden": "true", text: "→" }),
+        el("div", { role: "group", "aria-label": "Comes out" }, [el("h5", { text: "Comes out" }), stickies(st.outputs)]),
+      ]));
+      panel.appendChild(el("p", { class: "stage-change" }, [el("b", { text: "In Second Spin" }), document.createTextNode(st.change)]));
+      var nav = el("div", { class: "stage-nav" });
+      var pv = el("button", { class: "btn", type: "button", text: "← Previous stage" });
+      var nx = el("button", { class: "btn", type: "button", text: "Next stage →" });
+      pv.disabled = i === 0; nx.disabled = i === LCA.stages.length - 1;
+      pv.addEventListener("click", function () { select(cur - 1, false); });
+      nx.addEventListener("click", function () { select(cur + 1, false); });
+      nav.appendChild(pv); nav.appendChild(nx); panel.appendChild(nav);
+      if (focus) tabs[i].focus();
+    }
+    root.appendChild(list); root.appendChild(panel);
+    var lg = el("ul", { class: "legend", "aria-label": "Sticky note colors" }, LCA.legend.map(function (l) {
+      return el("li", null, [el("i", { class: "sw " + l.k, "aria-hidden": "true" }), document.createTextNode(l.label)]);
+    }));
+    root.appendChild(lg);
+    select(0, false);
+    return root;
+  }
+
+  function sensBlock() {
+    var M = LCA.model;
+    var root = el("div", { class: "sens" });
+    root.appendChild(el("h3", { class: "model-h", id: "sens-h", text: "Test the main assumption" }));
+    root.appendChild(el("p", { class: "model-lead", text: "Our model assumes reprinting emits about " + M.assumedG + " g of CO2 per record. Move the slider to see how much the result depends on that number." }));
+    var slider = el("input", { type: "range", id: "sens-g", min: "0", max: "200", step: "0.1", value: String(M.assumedG) });
+    var out = el("output", { class: "sens-out", for: "sens-g" });
+    var reset = el("button", { class: "btn", type: "button", text: "Reset to " + M.assumedG + " g" });
+    root.appendChild(el("div", { class: "sens-ctl" }, [el("label", { for: "sens-g", text: "CO2 per reprinted record" }), slider, out, reset]));
+    var chk = el("input", { type: "checkbox", id: "sens-t" });
+    root.appendChild(el("label", { class: "chk", for: "sens-t" }, [chk, document.createTextNode("Include collection transport (about " + fmt(M.transport) + " kg a year)")]));
+    var bc = el("i", { class: "seg cur" }), bp = el("i", { class: "seg paper" }), br = el("i", { class: "seg rep" }), bt = el("i", { class: "seg trn" });
+    var vc = el("span", { class: "bv" }), vs = el("span", { class: "bv" });
+    root.appendChild(el("div", { class: "bars", "aria-hidden": "true" }, [
+      el("div", { class: "bar-row" }, [el("span", { class: "bl", text: "Current production" }), el("div", { class: "bar" }, [bc]), vc]),
+      el("div", { class: "bar-row" }, [el("span", { class: "bl", text: "Second Spin" }), el("div", { class: "bar" }, [bp, br, bt]), vs]),
+    ]));
+    root.appendChild(el("ul", { class: "legend", "aria-hidden": "true" }, [
+      el("li", null, [el("i", { class: "sw cur" }), document.createTextNode("Current production")]),
+      el("li", null, [el("i", { class: "sw paper" }), document.createTextNode("Paper sleeve and cover")]),
+      el("li", null, [el("i", { class: "sw rep" }), document.createTextNode("Reprinting")]),
+      el("li", null, [el("i", { class: "sw trn" }), document.createTextNode("Collection transport")]),
+    ]));
+    var result = el("p", { class: "sens-result", role: "status", "aria-live": "polite" });
+    var facts = el("ul", { class: "sens-facts" });
+    root.appendChild(result); root.appendChild(facts);
+    root.appendChild(el("p", { class: "stats-note", text: "Current production (" + fmt(M.current) + " kg) and the paper sleeve and cover (" + fmt(M.paper) + " kg) come from our impact assessment and stay fixed here. All figures are estimates for one plant's 2022 volume of " + fmt(M.records) + " records, not measurements." }));
+    var t;
+    function calc() {
+      var g = parseFloat(slider.value) || 0, tr = chk.checked ? M.transport : 0;
+      var rep = M.records * g / 1000, total = M.paper + rep + tr, pct = (1 - total / M.current) * 100;
+      var be = (M.current / 2 - M.paper - tr) / (M.records / 1000);
+      out.textContent = (Math.round(g * 10) / 10) + " g";
+      slider.setAttribute("aria-valuetext", (Math.round(g * 10) / 10) + " grams of CO2 per record");
+      bc.style.width = "100%";
+      bp.style.width = (M.paper / M.current * 100) + "%"; br.style.width = (rep / M.current * 100) + "%"; bt.style.width = (tr / M.current * 100) + "%";
+      vc.textContent = fmt(M.current) + " kg"; vs.textContent = fmt(total) + " kg";
+      var rp = Math.round(Math.abs(pct));
+      var msg = "Second Spin: " + fmt(total) + " kg of CO2 a year, " + rp + "% " + (pct >= 0 ? "lower" : "higher") + " than current production.";
+      result.textContent = ""; result.appendChild(el("strong", { text: rp + "% " + (pct >= 0 ? "lower" : "higher") })); result.appendChild(document.createTextNode("Second Spin comes to " + fmt(total) + " kg of CO2 a year, against " + fmt(M.current) + " kg for current production."));
+      result.setAttribute("data-msg", msg);
+      facts.textContent = "";
+      facts.appendChild(el("li", { text: "Paper sleeves and covers make up " + Math.round(M.paper / total * 100) + "% of what is left. That is the next place to look." }));
+      facts.appendChild(el("li", { text: "The saving drops to 50% only if reprinting emitted about " + Math.round(be) + " g of CO2 per record. Our assumption is " + M.assumedG + " g." }));
+    }
+    slider.addEventListener("input", function () { clearTimeout(t); t = setTimeout(calc, 0); calc(); });
+    chk.addEventListener("change", calc);
+    reset.addEventListener("click", function () { slider.value = String(M.assumedG); calc(); });
+    calc();
+    return root;
+  }
+
   function block(b) {
     switch (b.t) {
+      case "stages": return stagesBlock();
+      case "sens": return sensBlock();
       case "p": return el("p", { text: b.text });
       case "list": return el("ul", null, b.items.map(function (i) { return el("li", { text: i }); }));
       case "fig": return fig(b);
