@@ -58,6 +58,7 @@ window.PROJECTS = [
     slug: "second-spin",
     title: "Second Spin",
     outcome: "Modeled about 80% less CO2 than pressing new vinyl. Service tested with six classmates; restamping itself is unproven.",
+    decision: "I designed the service around reusing the record itself, not only recycling the material, because new PVC is the largest source of emissions in our assessment.",
     tag: "Sustainability",
     problem:
       "Damaged vinyl ends up in landfill while new records need new PVC. Second Spin turns old records back into playable ones through record stores.",
@@ -302,6 +303,7 @@ window.PROJECTS = [
     slug: "focus-phone-stand",
     title: "Focus Phone Stand",
     outcome: "One student with ADHD rated the concept 6 value, 8 usability, 10 feasibility, 8 desirability (out of 10).",
+    decision: "I chose a physical cue over another app. Digital tools sit inside the phone that distracts, so a stand changes the desk instead of adding a layer to the phone.",
     tag: "Research",
     problem:
       "For a student with ADHD, starting work is the hard part, and the phone is usually the first thing in the way.",
@@ -536,6 +538,7 @@ window.PROJECTS = [
     slug: "molly-moons",
     title: "Molly Moon's Seasonal Flavors",
     outcome: "Concept redesign with dietary labels, photos, and a path to a nearby shop. Not user-tested.",
+    decision: "I grouped flavors by dietary need (vegan, dairy-free, nut-free) so people with a restriction see their options without reading descriptions. The tradeoff: the columns are not filters, so someone who needs vegan and nut-free is not served yet.",
     tag: "UX + Visual",
     problem:
       "Seasonal flavors appear as a text list with no photos, no dietary labels, and no path to a nearby shop.",
@@ -758,6 +761,7 @@ window.PROJECTS = [
     slug: "vacation-helper",
     title: "Vacation Helper",
     outcome: "Working Flask app that ranks destinations by budget and trip length. Live weather, estimated prices.",
+    decision: "I made each result show why it fits, for example a $180 estimated flight plus a $420 hotel, so people can check the math instead of trusting a rank.",
     tag: "Development",
     problem:
       "A small Flask app that ranks destinations against a budget and trip length, and explains why each one fits.",
