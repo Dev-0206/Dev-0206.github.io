@@ -509,3 +509,13 @@ noscript .wrap { padding-block: 20px; }
 .hero-chips a:hover { border-color: var(--ink); background: var(--panel); text-decoration: none; }
 
 .contact-head { margin: 0 0 14px; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.9rem, 3.8vw, 2.9rem); line-height: 1.04; letter-spacing: -0.01em; max-width: 18ch; text-wrap: balance; }
+
+/* Live demo link under a project card */
+.card-wrap { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.card-live {
+  justify-self: start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px;
+  border: 2px solid var(--ink); border-radius: 999px; color: var(--ink); font-weight: 700; text-decoration: none;
+}
+.card-live::after { content: "\2197"; margin-left: 8px; color: var(--accent); }
+.card-live:hover { background: var(--ink); color: var(--bg); text-decoration: none; }
+.card-live:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }

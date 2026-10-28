@@ -64,7 +64,10 @@
         el("div", null, [el("dt", { text: "When" }), el("dd", { text: p.timeline })]),
       ]),
     ]);
-    grid.appendChild(a);
+    if (p.demo) {
+      var wrap = el("div", { class: "card-wrap" }, [a, el("a", { class: "card-live", href: p.demo, text: "Try it live", "aria-label": "Try " + p.title + " live (opens the working demo)" })]);
+      grid.appendChild(wrap);
+    } else grid.appendChild(a);
   });
 
   var ac = $("#about-copy");

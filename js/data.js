@@ -760,6 +760,7 @@ window.PROJECTS = [
   {
     slug: "vacation-helper",
     title: "Vacation Helper",
+    demo: "vacation-helper-demo/index.html",
     outcome: "Working Flask app that ranks destinations by budget and trip length. Redesigned after class with scenic destinations and a compare view. Live weather, estimated prices.",
     decision: "I made each result show why it fits, for example a $180 estimated flight plus a $420 hotel, so people can check the math instead of trusting a rank.",
     tag: "Development",
