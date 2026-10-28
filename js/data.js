@@ -55,241 +55,9 @@ window.SITE = {
 window.PROJECTS = [
   /* ------------------------------------------------------------------ */
   {
-    slug: "focus-phone-stand",
-    title: "Focus Phone Stand",
-    tag: "Research",
-    problem:
-      "For a student with ADHD, starting work is the hard part, and the phone is usually the first thing in the way.",
-    role: "Interview notes and transcripts, synthesis, concept sketches, presentations, final report",
-    timeline: "Winter quarter 2026",
-    tools: "Structured interview, co-journey mapping, co-ideation, storyboarding",
-    team: "Theo Tzankov, Zayyan Ahmad, Dev Gandhi",
-    context: "HCDE 315 Inclusive Design, University of Washington",
-    cover: "assets/img/adhd-storyboard.webp",
-    coverAlt:
-      "Eight-panel hand-drawn storyboard of a student placing a phone on a stand, a light turning on, and a work session beginning.",
-    coverFit: "contain",
-    sections: [
-      {
-        id: "overview",
-        title: "Overview",
-        blocks: [
-          {
-            t: "p",
-            text:
-              "Our team worked with one student with ADHD across the quarter to find a design that fit how they already work. The result is the Focus Phone Stand. It holds the phone upright and turns on a light when the phone is placed, so putting the phone down becomes the start of a work session.",
-          },
-        ],
-      },
-      {
-        id: "problem",
-        title: "Problem",
-        blocks: [
-          {
-            t: "p",
-            text:
-              "In our first interview, the hardest part of schoolwork was often getting started, not the work itself. Sitting down to work often turned into checking the phone first.",
-          },
-          {
-            t: "p",
-            text:
-              "We reviewed four existing tools to see what was already on offer. Each one either keeps the phone in play or takes it away, and the participant did not want to lose access to their phone.",
-          },
-          {
-            t: "table",
-            head: ["Tool", "What it does well", "Where it falls short"],
-            rows: [
-              ["Forest app", "Builds motivation with visible progress.", "Lives on the phone, so the distraction stays within reach."],
-              ["Pomodoro timers", "Give time structure.", "Do not change how reachable the phone is."],
-              ["Phone lock boxes", "Remove the distraction completely.", "Feel rigid and punitive."],
-              ["Apple Screen Time", "Raises awareness of phone habits.", "Works inside the same device that distracts."],
-            ],
-            caption: "Competitive analysis from our final report.",
-          },
-        ],
-      },
-      {
-        id: "research",
-        title: "Research and insights",
-        blocks: [
-          {
-            t: "p",
-            text:
-              "We worked with the same participant through the whole quarter. Staying with one person gave us depth, and it also limits what we can claim.",
-          },
-          {
-            t: "cards",
-            cols: 2,
-            items: [
-              { title: "Structured interview, 90 minutes", text: "We covered everyday environments, attention and interaction, and tools and workarounds. We let the participant jump between topics and kept their own wording." },
-              { title: "Co-journey mapping, 30 minutes", text: "The participant drew and narrated a task, then marked the steps that felt intuitive and the steps that took extra effort." },
-              { title: "Co-ideation, 60 minutes", text: "We reviewed the insights, then sketched design directions together on a day-to-day task. I took notes with Zayyan." },
-              { title: "Final partner feedback", text: "A short session on the refined concept with open questions about what worked and what was unclear." },
-            ],
-          },
-          { t: "p", text: "The first two sessions produced four insights." },
-          {
-            t: "cards",
-            cols: 2,
-            items: [
-              { title: "Productivity depends on state", text: "Energy and focus change across the day, so a tool cannot assume steady capacity." },
-              { title: "Starting is hard when the task is vague", text: "Large or unclear tasks were hard to begin because it was not clear where to start." },
-              { title: "Motivation is social and emotional", text: "Accountability and the sense of not letting someone down made it easier to engage." },
-              { title: "Environments can help or hurt attention", text: "Some spaces made starting easier. The participant's main workspace was also where they rest, which pulled attention away." },
-            ],
-          },
-          { t: "p", text: "From these we wrote three how-might-we questions." },
-          {
-            t: "list",
-            items: [
-              "How might we design for fluctuating capacity?",
-              "How might we design clear entry points that make the first step of a task structured and intuitive, without oversimplifying the work?",
-              "How might we design environments or systems that use social connection and shared responsibility to support engagement?",
-            ],
-          },
-          {
-            t: "p",
-            text:
-              "The participant chose the third question as the one to address and called the second one a strong option as well.",
-          },
-        ],
-      },
-      {
-        id: "process",
-        title: "Process",
-        blocks: [
-          {
-            t: "steps",
-            items: [
-              { title: "Interview and mapping", text: "Two sessions with the participant produced four insights." },
-              { title: "Synthesis", text: "We turned the insights into three how-might-we questions and three design principles." },
-              { title: "Co-ideation", text: "Together we sketched three directions: a phone stand, a Canvas integration with an AI helper, and a dynamic schedule builder. Our notes record that the participant liked the phone stand idea." },
-              { title: "Concept and storyboard", text: "We developed the stand as a concept and drew it as an eight-panel storyboard." },
-              { title: "Final feedback", text: "The participant reviewed the refined concept and rated it." },
-            ],
-          },
-          {
-            t: "figs",
-            cols: 2,
-            items: [
-              { src: "assets/img/adhd-stand-sketch.webp", alt: "Pencil sketch of a tilted phone stand labeled Focus Mode On, with a small focus light at its base.", caption: "An early sketch of the stand and its focus light." },
-              { src: "assets/img/adhd-desk-sketch.webp", alt: "Ink sketch of a desk with a lamp, plant, and monitor. Annotations point to a phone stand and to a button-triggered focus light.", caption: "A desk sketch showing where the stand and light would sit." },
-            ],
-          },
-        ],
-      },
-      {
-        id: "decisions",
-        title: "Key decisions",
-        blocks: [
-          {
-            t: "cards",
-            cols: 3,
-            items: [
-              { title: "A cue, not a lock", text: "Lock boxes remove the phone and feel punitive. The stand keeps the phone reachable and marks the moment work begins." },
-              { title: "An object, not another app", text: "Digital tools sit inside the device that distracts. A physical object changes the desk instead of adding a layer to the phone." },
-              { title: "Keep it simple", text: "After the final session no major changes were suggested, so we added no features. The participant valued the simplicity." },
-            ],
-          },
-          { t: "p", text: "Three design principles guided these choices." },
-          {
-            t: "cards",
-            cols: 3,
-            items: [
-              { title: "Design for clear entry and momentum", text: "Make the first step visible, actionable, and finite." },
-              { title: "Externalize regulation through visible cues", text: "Make the intention physically or visually present in the environment." },
-              { title: "Leverage accountability and adaptability", text: "Adapt to changing energy, create shared or perceived accountability, and allow personalization." },
-            ],
-          },
-        ],
-      },
-      {
-        id: "design",
-        title: "Final concept",
-        blocks: [
-          {
-            t: "p",
-            text:
-              "The stand is a desk accessory that holds a phone upright and lights up when the phone is placed on it. The light tells the user, and the room, that a focus session has started. It gives the phone a home, creates a visible start cue, and turns focus into a small physical ritual without taking the phone away.",
-          },
-          {
-            t: "fig",
-            wide: true,
-            contain: true,
-            src: "assets/img/adhd-storyboard.webp",
-            alt: "Eight storyboard panels in order: distracted and stuck, meets the focus stand, the act of focus, light activation, work mode triggered, reduced distractions, steady progress, productive completion.",
-            caption: "Storyboard. A student sits down distracted, places the phone on the stand, sees the light turn on, and works until the session ends.",
-          },
-          {
-            t: "fig",
-            src: "assets/img/adhd-render.webp",
-            alt: "Rendered concept of a phone on a magnetic stand with a glowing LED ring at its base, with labels for the mount, lock-in sensor, charging, and light.",
-            caption: "Concept render of the stand with a magnetic mount and an LED ring. My teammate Theo Tzankov made it in Figma from the idea we developed together. It is a visual concept, and we did not build a physical prototype.",
-          },
-        ],
-      },
-      {
-        id: "results",
-        title: "Participant feedback",
-        blocks: [
-          {
-            t: "stats",
-            items: [
-              { value: "6", label: "Value" },
-              { value: "8", label: "Usability" },
-              { value: "10", label: "Feasibility" },
-              { value: "8", label: "Desirability" },
-            ],
-            note:
-              "Scores out of 10 from one participant after seeing the concept. This is early directional feedback, not a usability test of a built product.",
-          },
-          { t: "quote", text: "I like that it changes my environment instead of expecting me to just have more discipline.", cite: "Participant" },
-          { t: "quote", text: "Placing my phone on it feels like a small ritual.", cite: "Participant" },
-        ],
-      },
-      {
-        id: "reflection",
-        title: "Reflection",
-        blocks: [
-          {
-            t: "p",
-            text:
-              "I started the quarter believing inclusive design meant making something work for as many people as possible. Working with one participant changed that. People with ADHD do not all experience distraction the same way, so a design has to start from a specific person and a specific place.",
-          },
-          {
-            t: "p",
-            text:
-              "The interviews also changed what I thought the problem was. I assumed it was motivation. It turned out to be more about knowing where to start, with the phone sitting right there when starting felt hard.",
-          },
-          {
-            t: "note",
-            title: "Limits",
-            text:
-              "One participant, one quarter, and no built prototype. Value was the lowest score at 6 out of 10, so the concept needs more testing before I would call it solved.",
-          },
-        ],
-      },
-      {
-        id: "next",
-        title: "Next steps",
-        blocks: [
-          {
-            t: "list",
-            items: [
-              "Build a working version with a real light and a phone sensor.",
-              "Test with more people with ADHD to see whether the ritual holds across different routines.",
-              "Explore the social accountability direction the participant picked in the first session, since the stand answers a different question.",
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
-  /* ------------------------------------------------------------------ */
-  {
     slug: "second-spin",
     title: "Second Spin",
+    outcome: "Modeled about 80% less CO2 than pressing new vinyl. Service tested with six classmates; restamping itself is unproven.",
     tag: "Sustainability",
     problem:
       "Damaged vinyl ends up in landfill while new records need new PVC. Second Spin turns old records back into playable ones through record stores.",
@@ -531,8 +299,243 @@ window.PROJECTS = [
 
   /* ------------------------------------------------------------------ */
   {
+    slug: "focus-phone-stand",
+    title: "Focus Phone Stand",
+    outcome: "One student with ADHD rated the concept 6 value, 8 usability, 10 feasibility, 8 desirability (out of 10).",
+    tag: "Research",
+    problem:
+      "For a student with ADHD, starting work is the hard part, and the phone is usually the first thing in the way.",
+    role: "Interview notes and transcripts, synthesis, concept sketches, presentations, final report",
+    timeline: "Winter quarter 2026",
+    tools: "Structured interview, co-journey mapping, co-ideation, storyboarding",
+    team: "Theo Tzankov, Zayyan Ahmad, Dev Gandhi",
+    context: "HCDE 315 Inclusive Design, University of Washington",
+    cover: "assets/img/adhd-storyboard.webp",
+    coverAlt:
+      "Eight-panel hand-drawn storyboard of a student placing a phone on a stand, a light turning on, and a work session beginning.",
+    coverFit: "contain",
+    sections: [
+      {
+        id: "overview",
+        title: "Overview",
+        blocks: [
+          {
+            t: "p",
+            text:
+              "Our team worked with one student with ADHD across the quarter to find a design that fit how they already work. The result is the Focus Phone Stand. It holds the phone upright and turns on a light when the phone is placed, so putting the phone down becomes the start of a work session.",
+          },
+        ],
+      },
+      {
+        id: "problem",
+        title: "Problem",
+        blocks: [
+          {
+            t: "p",
+            text:
+              "In our first interview, the hardest part of schoolwork was often getting started, not the work itself. Sitting down to work often turned into checking the phone first.",
+          },
+          {
+            t: "p",
+            text:
+              "We reviewed four existing tools to see what was already on offer. Each one either keeps the phone in play or takes it away, and the participant did not want to lose access to their phone.",
+          },
+          {
+            t: "table",
+            head: ["Tool", "What it does well", "Where it falls short"],
+            rows: [
+              ["Forest app", "Builds motivation with visible progress.", "Lives on the phone, so the distraction stays within reach."],
+              ["Pomodoro timers", "Give time structure.", "Do not change how reachable the phone is."],
+              ["Phone lock boxes", "Remove the distraction completely.", "Feel rigid and punitive."],
+              ["Apple Screen Time", "Raises awareness of phone habits.", "Works inside the same device that distracts."],
+            ],
+            caption: "Competitive analysis from our final report.",
+          },
+        ],
+      },
+      {
+        id: "research",
+        title: "Research and insights",
+        blocks: [
+          {
+            t: "p",
+            text:
+              "We worked with the same participant through the whole quarter. Staying with one person gave us depth, and it also limits what we can claim.",
+          },
+          {
+            t: "cards",
+            cols: 2,
+            items: [
+              { title: "Structured interview, 90 minutes", text: "We covered everyday environments, attention and interaction, and tools and workarounds. We let the participant jump between topics and kept their own wording." },
+              { title: "Co-journey mapping, 30 minutes", text: "The participant drew and narrated a task, then marked the steps that felt intuitive and the steps that took extra effort." },
+              { title: "Co-ideation, 60 minutes", text: "We reviewed the insights, then sketched design directions together on a day-to-day task. I took notes with Zayyan." },
+              { title: "Final partner feedback", text: "A short session on the refined concept with open questions about what worked and what was unclear." },
+            ],
+          },
+          { t: "p", text: "The first two sessions produced four insights." },
+          {
+            t: "cards",
+            cols: 2,
+            items: [
+              { title: "Productivity depends on state", text: "Energy and focus change across the day, so a tool cannot assume steady capacity." },
+              { title: "Starting is hard when the task is vague", text: "Large or unclear tasks were hard to begin because it was not clear where to start." },
+              { title: "Motivation is social and emotional", text: "Accountability and the sense of not letting someone down made it easier to engage." },
+              { title: "Environments can help or hurt attention", text: "Some spaces made starting easier. The participant's main workspace was also where they rest, which pulled attention away." },
+            ],
+          },
+          { t: "p", text: "From these we wrote three how-might-we questions." },
+          {
+            t: "list",
+            items: [
+              "How might we design for fluctuating capacity?",
+              "How might we design clear entry points that make the first step of a task structured and intuitive, without oversimplifying the work?",
+              "How might we design environments or systems that use social connection and shared responsibility to support engagement?",
+            ],
+          },
+          {
+            t: "p",
+            text:
+              "The participant chose the third question as the one to address and called the second one a strong option as well.",
+          },
+        ],
+      },
+      {
+        id: "process",
+        title: "Process",
+        blocks: [
+          {
+            t: "steps",
+            items: [
+              { title: "Interview and mapping", text: "Two sessions with the participant produced four insights." },
+              { title: "Synthesis", text: "We turned the insights into three how-might-we questions and three design principles." },
+              { title: "Co-ideation", text: "Together we sketched three directions: a phone stand, a Canvas integration with an AI helper, and a dynamic schedule builder. Our notes record that the participant liked the phone stand idea." },
+              { title: "Concept and storyboard", text: "We developed the stand as a concept and drew it as an eight-panel storyboard." },
+              { title: "Final feedback", text: "The participant reviewed the refined concept and rated it." },
+            ],
+          },
+          {
+            t: "figs",
+            cols: 2,
+            items: [
+              { src: "assets/img/adhd-stand-sketch.webp", alt: "Pencil sketch of a tilted phone stand labeled Focus Mode On, with a small focus light at its base.", caption: "An early sketch of the stand and its focus light." },
+              { src: "assets/img/adhd-desk-sketch.webp", alt: "Ink sketch of a desk with a lamp, plant, and monitor. Annotations point to a phone stand and to a button-triggered focus light.", caption: "A desk sketch showing where the stand and light would sit." },
+            ],
+          },
+        ],
+      },
+      {
+        id: "decisions",
+        title: "Key decisions",
+        blocks: [
+          {
+            t: "cards",
+            cols: 3,
+            items: [
+              { title: "A cue, not a lock", text: "Lock boxes remove the phone and feel punitive. The stand keeps the phone reachable and marks the moment work begins." },
+              { title: "An object, not another app", text: "Digital tools sit inside the device that distracts. A physical object changes the desk instead of adding a layer to the phone." },
+              { title: "Keep it simple", text: "After the final session no major changes were suggested, so we added no features. The participant valued the simplicity." },
+            ],
+          },
+          { t: "p", text: "Three design principles guided these choices." },
+          {
+            t: "cards",
+            cols: 3,
+            items: [
+              { title: "Design for clear entry and momentum", text: "Make the first step visible, actionable, and finite." },
+              { title: "Externalize regulation through visible cues", text: "Make the intention physically or visually present in the environment." },
+              { title: "Leverage accountability and adaptability", text: "Adapt to changing energy, create shared or perceived accountability, and allow personalization." },
+            ],
+          },
+        ],
+      },
+      {
+        id: "design",
+        title: "Final concept",
+        blocks: [
+          {
+            t: "p",
+            text:
+              "The stand is a desk accessory that holds a phone upright and lights up when the phone is placed on it. The light tells the user, and the room, that a focus session has started. It gives the phone a home, creates a visible start cue, and turns focus into a small physical ritual without taking the phone away.",
+          },
+          {
+            t: "fig",
+            wide: true,
+            contain: true,
+            src: "assets/img/adhd-storyboard.webp",
+            alt: "Eight storyboard panels in order: distracted and stuck, meets the focus stand, the act of focus, light activation, work mode triggered, reduced distractions, steady progress, productive completion.",
+            caption: "Storyboard. A student sits down distracted, places the phone on the stand, sees the light turn on, and works until the session ends.",
+          },
+          {
+            t: "fig",
+            src: "assets/img/adhd-render.webp",
+            alt: "Rendered concept of a phone on a magnetic stand with a glowing LED ring at its base, with labels for the mount, lock-in sensor, charging, and light.",
+            caption: "Concept render of the stand with a magnetic mount and an LED ring. My teammate Theo Tzankov made it in Figma from the idea we developed together. It is a visual concept, and we did not build a physical prototype.",
+          },
+        ],
+      },
+      {
+        id: "results",
+        title: "Participant feedback",
+        blocks: [
+          {
+            t: "stats",
+            items: [
+              { value: "6", label: "Value" },
+              { value: "8", label: "Usability" },
+              { value: "10", label: "Feasibility" },
+              { value: "8", label: "Desirability" },
+            ],
+            note:
+              "Scores out of 10 from one participant after seeing the concept. This is early directional feedback, not a usability test of a built product.",
+          },
+          { t: "quote", text: "I like that it changes my environment instead of expecting me to just have more discipline.", cite: "Participant" },
+          { t: "quote", text: "Placing my phone on it feels like a small ritual.", cite: "Participant" },
+        ],
+      },
+      {
+        id: "reflection",
+        title: "Reflection",
+        blocks: [
+          {
+            t: "p",
+            text:
+              "I started the quarter believing inclusive design meant making something work for as many people as possible. Working with one participant changed that. People with ADHD do not all experience distraction the same way, so a design has to start from a specific person and a specific place.",
+          },
+          {
+            t: "p",
+            text:
+              "The interviews also changed what I thought the problem was. I assumed it was motivation. It turned out to be more about knowing where to start, with the phone sitting right there when starting felt hard.",
+          },
+          {
+            t: "note",
+            title: "Limits",
+            text:
+              "One participant, one quarter, and no built prototype. Value was the lowest score at 6 out of 10, so the concept needs more testing before I would call it solved.",
+          },
+        ],
+      },
+      {
+        id: "next",
+        title: "Next steps",
+        blocks: [
+          {
+            t: "list",
+            items: [
+              "Build a working version with a real light and a phone sensor.",
+              "Test with more people with ADHD to see whether the ritual holds across different routines.",
+              "Explore the social accountability direction the participant picked in the first session, since the stand answers a different question.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ */
+  {
     slug: "molly-moons",
     title: "Molly Moon's Seasonal Flavors",
+    outcome: "Concept redesign with dietary labels, photos, and a path to a nearby shop. Not user-tested.",
     tag: "UX + Visual",
     problem:
       "Seasonal flavors appear as a text list with no photos, no dietary labels, and no path to a nearby shop.",
@@ -754,6 +757,7 @@ window.PROJECTS = [
   {
     slug: "vacation-helper",
     title: "Vacation Helper",
+    outcome: "Working Flask app that ranks destinations by budget and trip length. Live weather, estimated prices.",
     tag: "Development",
     problem:
       "A small Flask app that ranks destinations against a budget and trip length, and explains why each one fits.",

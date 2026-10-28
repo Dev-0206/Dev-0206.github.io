@@ -51,12 +51,13 @@
 
   var grid = $("#work-grid");
   P.forEach(function (p) {
-    var a = el("a", { class: "card", id: "card-" + p.slug, href: "#/work/" + p.slug, "data-slug": p.slug, "aria-label": p.title + ". " + p.problem }, [
+    var a = el("a", { class: "card", id: "card-" + p.slug, href: "#/work/" + p.slug, "data-slug": p.slug, "aria-label": p.title + ". " + (p.outcome ? p.outcome + " " : "") + p.problem }, [
       el("div", { class: "card-media" }, [
         el("img", { src: p.cover, alt: p.coverAlt, loading: "lazy", decoding: "async", class: p.coverFit === "contain" ? "contain" : "cover", style: p.coverPos ? "object-position:" + p.coverPos : null }),
         el("span", { class: "card-tag", text: p.tag }),
       ]),
       (function () { var h = el("h3", { text: p.title + " " }); h.appendChild(svg(ARROW)); return h; })(),
+      p.outcome ? el("p", { class: "card-outcome" }, [el("span", { class: "card-outcome-label", text: "Outcome" }), el("span", { text: p.outcome })]) : null,
       el("p", { text: p.problem }),
       el("dl", null, [
         el("div", null, [el("dt", { text: "Role" }), el("dd", { text: p.role })]),
