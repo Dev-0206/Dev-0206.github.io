@@ -51,7 +51,7 @@
 
   var grid = $("#work-grid");
   P.forEach(function (p) {
-    var a = el("a", { class: "card", href: "#/work/" + p.slug, "data-slug": p.slug, "aria-label": p.title + ". " + p.problem }, [
+    var a = el("a", { class: "card", id: "card-" + p.slug, href: "#/work/" + p.slug, "data-slug": p.slug, "aria-label": p.title + ". " + p.problem }, [
       el("div", { class: "card-media" }, [
         el("img", { src: p.cover, alt: p.coverAlt, loading: "lazy", decoding: "async", class: p.coverFit === "contain" ? "contain" : "cover", style: p.coverPos ? "object-position:" + p.coverPos : null }),
         el("span", { class: "card-tag", text: p.tag }),

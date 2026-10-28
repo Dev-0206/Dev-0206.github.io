@@ -26,7 +26,7 @@ window.SITE = {
   chips: [
     { text: "Vinyl reuse service, about 80% less CO2 (modeled)", href: "#/work/second-spin" },
     { text: "ADHD focus stand, co-designed with a student", href: "#/work/focus-phone-stand" },
-    { text: "Seasonal-flavor redesign + working trip-planner app", href: "#work" },
+    { text: "Seasonal-flavor redesign + working trip-planner app", href: "#card-molly-moons" },
   ],
   status:
     "BFA UX Design at SCAD. Transferred from UW Human Centered Design & Engineering.",

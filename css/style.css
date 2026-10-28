@@ -468,6 +468,7 @@ noscript .wrap { padding-block: 20px; }
 .hero h1 { font-size: clamp(3rem, 11vw, 8.5rem); line-height: .86; }
 .hero-grid { align-items: start; }
 .hero-main { display: grid; gap: 22px; min-width: 0; }
+.card { scroll-margin-top: 96px; }
 .hero-statement { font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.06; max-width: 22ch; }
 .hero-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .hero-chips a {
