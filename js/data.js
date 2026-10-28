@@ -784,7 +784,7 @@ window.PROJECTS = [
             text:
               "Vacation Helper takes an origin airport, a budget, and a number of nights. It returns a ranked list of destinations with estimated total cost and a plain sentence on why each one fits. Each result opens a detail page with the current weather.",
           },
-          { t: "links", items: [{ label: "Redesigned version on GitHub", href: "https://github.com/Dev-0206/Vacation-Helper" }, { label: "Original class version", href: "https://github.com/Dev-0206/Vacation-Helper/tree/class-submission" }] },
+          { t: "links", items: [{ label: "Try the redesign (demo)", href: "vacation-helper-demo/index.html" }, { label: "Redesigned version on GitHub", href: "https://github.com/Dev-0206/Vacation-Helper" }, { label: "Original class version", href: "https://github.com/Dev-0206/Vacation-Helper/tree/class-submission" }] },
         ],
       },
       {
@@ -924,12 +924,12 @@ window.PROJECTS = [
           {
             t: "p",
             text:
-              "How I built it: I directed the redesign and tested it, and I used Claude to write most of the new templates, CSS, JavaScript, and the script that generates the scenes. The class version used AI only for formatting, and the repository's ai.txt describes both. I have not run a usability test on the redesign yet, so I cannot say it is easier to use, only that it does more.",
+              "How I built it: I used Claude to vibe code the redesign to my direction, and I tested it myself. The class version used AI only for formatting, and the repository's ai.txt describes both. I have not run a usability test on the redesign yet, so I cannot say it is easier to use, only that it does more.",
           },
           {
             t: "p",
             text:
-              "What did not change: prices are still estimates from a sample list, and the origin airport does not change them. The page now says so.",
+              "What did not change: prices are still estimates from a sample list, and the origin airport does not change them. The page now says so. The demo has no live weather, which needs the full Flask app.",
           },
         ],
       },

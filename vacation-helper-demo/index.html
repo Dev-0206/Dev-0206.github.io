@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vacation Helper</title>
+  <meta name="description" content="Pick a budget and trip length. See which US destinations fit, and why, with the math shown.">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="static/fonts/instrument-serif-latin-400-normal.woff2">
+  <link rel="stylesheet" href="static/css/app.css">
+</head>
+<body class="home" data-page="home">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top"><a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true"></span>Vacation Helper</a></header>
+  <main id="main">
+<div class="backdrop" id="backdrop" aria-hidden="true">
+  <img src="static/scenes/seattle.svg" alt="" data-scene="seattle" class="on"><img src="static/scenes/miami.svg" alt="" data-scene="miami" ><img src="static/scenes/denver.svg" alt="" data-scene="denver" ><img src="static/scenes/san-diego.svg" alt="" data-scene="san-diego" ><img src="static/scenes/chicago.svg" alt="" data-scene="chicago" ><img src="static/scenes/boston.svg" alt="" data-scene="boston" ><img src="static/scenes/las-vegas.svg" alt="" data-scene="las-vegas" ><img src="static/scenes/phoenix.svg" alt="" data-scene="phoenix" ><img src="static/scenes/austin.svg" alt="" data-scene="austin" ><img src="static/scenes/new-york.svg" alt="" data-scene="new-york" ><img src="static/scenes/orlando.svg" alt="" data-scene="orlando" ><img src="static/scenes/san-francisco.svg" alt="" data-scene="san-francisco" ><img src="static/scenes/nashville.svg" alt="" data-scene="nashville" ><img src="static/scenes/portland.svg" alt="" data-scene="portland" ><img src="static/scenes/salt-lake-city.svg" alt="" data-scene="salt-lake-city" >
+</div>
+<section class="hero wrap">
+  <p class="eyebrow">Trip planner</p>
+  <h1 class="display">Where can your budget take you?</h1>
+  <p class="lede">Tell us what you can spend and how long you have. We rank <span id="count-lede">15</span> US destinations and show the math behind every one.</p>
+
+  <form class="panel plan" action="results.html" method="get" id="plan" novalidate>
+    <div class="field">
+      <label for="origin">Flying from <span class="hint">(airport code)</span></label>
+      <input id="origin" name="origin" value="SEA" maxlength="3" autocomplete="off" inputmode="text" pattern="[A-Za-z]{3}" required>
+    </div>
+    <div class="field">
+      <label for="budget">Total budget</label>
+      <div class="num"><span aria-hidden="true">$</span><input id="budget" name="budget" type="number" min="100" max="20000" step="50" value="1500" required></div>
+      <input class="range" id="budget-r" type="range" min="300" max="6000" step="50" value="1500" aria-label="Budget slider">
+    </div>
+    <div class="field">
+      <label for="nights">Nights</label>
+      <div class="stepper">
+        <button type="button" data-step="-1" aria-label="Fewer nights">&minus;</button>
+        <input id="nights" name="nights" type="number" min="1" max="30" value="4" required>
+        <button type="button" data-step="1" aria-label="More nights">+</button>
+      </div>
+    </div>
+    <fieldset class="field wide">
+      <legend>What do you want? <span class="hint">(optional, pick any)</span></legend>
+      <div class="chips" id="vibes"></div>
+    </fieldset>
+    <div class="live wide" id="live" aria-live="polite"></div>
+    <button class="btn primary wide" type="submit">Show my trips</button>
+    <p class="fine wide">Flight and hotel prices are sample estimates. The airport you pick only removes it from the list; it does not change flight prices.</p>
+  </form>
+</section>
+<script id="dest-data" type="application/json">[]</script>
+</main>
+  <footer class="foot">Prices are estimates from a sample list, not live quotes. Weather is live. Built by Dev Gandhi.</footer>
+  <script>window.VH_DEMO=1</script><script src="static/js/data.js"></script><script src="static/js/demo.js"></script><script src="static/js/app.js" defer></script>
+</body>
+</html>
