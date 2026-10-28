@@ -463,4 +463,18 @@ noscript .wrap { padding-block: 20px; }
 .cs-body ul.stickies, .cs-body ul.legend { padding: 0; margin: 0; list-style: none; }
 .cs-body ul.stickies > li, .cs-body ul.legend > li { margin: 0; }
 
+/* ---------- Hero v3: proof first (smaller name, headline, proof chips) ---------- */
+.hero { padding-block: clamp(32px, 6vw, 72px) clamp(36px, 5vw, 64px); }
+.hero h1 { font-size: clamp(3rem, 11vw, 8.5rem); line-height: .86; }
+.hero-grid { align-items: start; }
+.hero-main { display: grid; gap: 22px; min-width: 0; }
+.hero-statement { font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.06; max-width: 22ch; }
+.hero-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-chips a {
+  display: inline-flex; align-items: center; gap: 10px; padding: 9px 16px; min-height: 40px;
+  border: 1px solid var(--line); border-radius: 999px; text-decoration: none; font-size: .95rem; line-height: 1.25;
+}
+.hero-chips a::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+.hero-chips a:hover { border-color: var(--ink); background: var(--panel); text-decoration: none; }
+
 .contact-head { margin: 0 0 14px; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.9rem, 3.8vw, 2.9rem); line-height: 1.04; letter-spacing: -0.01em; max-width: 18ch; text-wrap: balance; }

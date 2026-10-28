@@ -37,9 +37,13 @@
   var parts = S.name.split(" ");
   $("#h-first").textContent = parts[0];
   $("#h-last").textContent = parts.slice(1).join(" ");
-  $("#h-pos").textContent = S.positioning;
+  $("#h-pos").textContent = S.ask || S.positioning;
   $("#h-focus").textContent = S.focus;
   $("#h-statement").textContent = S.statement;
+  var chips = $("#h-chips");
+  (S.chips || []).forEach(function (c) {
+    chips.appendChild(el("li", null, [el("a", { href: c.href, text: c.text })]));
+  });
   $("#h-status").textContent = S.status;
   ["#h-resume", "#r-dl", "#r-open"].forEach(function (s) { var n = $(s); if (n) n.setAttribute("href", S.resume); });
   $("#year").textContent = new Date().getFullYear();
