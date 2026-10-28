@@ -38,8 +38,8 @@ window.SITE = {
   about: {
     paragraphs: [
       "I'm a UX Design student at SCAD in Savannah, working toward a BFA (expected 2028). Before SCAD I studied Human Centered Design & Engineering at the University of Washington from 2023 to 2026, where I made the projects on this site.",
-      "My work starts with listening: interviews, journey maps, and critique. It ends in something people can react to, such as a storyboard, a prototype, or a working app. I'm drawn to products that sit between a screen and a physical setting, and to sustainability questions where a design change can shift a whole system.",
       "Before design school I founded a school solar program in India. It installed 50+ solar panels with about $10,000 in funding and ran workshops for 200+ students.",
+      "My work starts with listening: interviews, journey maps, and critique. It ends in something people can react to, such as a storyboard, a prototype, or a working app. I'm drawn to products that sit between a screen and a physical setting, and to sustainability questions where a design change can shift a whole system.",
     ],
     facts: [
       { label: "Education", value: "SCAD, BFA UX Design (expected 2028). University of Washington, Human Centered Design & Engineering, 2023 to 2026." },
@@ -802,6 +802,7 @@ window.PROJECTS = [
       {
         id: "process",
         title: "How it works",
+        open: true,
         blocks: [
           {
             t: "steps",

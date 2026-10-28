@@ -296,6 +296,10 @@
     var h1 = el("h1", { id: "case-title", tabindex: "-1", text: p.title });
     hw.appendChild(h1);
     hw.appendChild(el("p", { class: "lede", text: p.problem }));
+    var strip = el("div", { class: "case-strip" });
+    if (p.outcome) strip.appendChild(el("p", { class: "case-strip-item" }, [el("span", { class: "lbl", text: "Outcome" }), el("span", { text: p.outcome })]));
+    if (p.decision) strip.appendChild(el("p", { class: "case-strip-item" }, [el("span", { class: "lbl", text: "A decision I made" }), el("span", { text: p.decision })]));
+    if (strip.childNodes.length) hw.appendChild(strip);
     var meta = el("dl", { class: "meta" });
     [["Role", p.role], ["Timeline", p.timeline], ["Team", p.team], ["Context", p.context], ["Tools and methods", p.tools]].forEach(function (m) {
       if (m[1]) meta.appendChild(el("div", null, [el("dt", { text: m[0] }), el("dd", { text: m[1] })]));
@@ -306,12 +310,24 @@
 
     var cs = el("div", { class: "cs" });
     var cw = el("div", { class: "wrap" });
+    var FOLD = { process: 1, reflection: 1, next: 1 };
     p.sections.forEach(function (s) {
-      var row = el("section", { class: "cs-row", "aria-labelledby": "s-" + s.id });
+      var folded = !!FOLD[s.id] && !s.open;
+      var row = el("section", { class: "cs-row" + (folded ? " cs-fold" : ""), "aria-labelledby": "s-" + s.id });
       row.style.paddingBlock = "";
       row.appendChild(el("h2", { id: "s-" + s.id, text: s.title }));
       var body = el("div", { class: "cs-body" });
-      s.blocks.forEach(function (b) { var node = block(b); if (node) body.appendChild(node); });
+      var target = body;
+      if (folded) {
+        var d = el("details", { class: "cs-details" });
+        var label = s.title.toLowerCase();
+        var sm = el("summary", { text: "Show " + label });
+        var inner = el("div", { class: "cs-body cs-details-body" });
+        d.appendChild(sm); d.appendChild(inner); body.appendChild(d);
+        d.addEventListener("toggle", function () { sm.textContent = (d.open ? "Hide " : "Show ") + label; });
+        target = inner;
+      }
+      s.blocks.forEach(function (b) { var node = block(b); if (node) target.appendChild(node); });
       row.appendChild(body); cw.appendChild(row);
     });
     cs.appendChild(cw); caseEl.appendChild(cs);

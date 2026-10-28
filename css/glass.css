@@ -131,7 +131,7 @@ body::before {
   box-shadow: inset 0 1px 0 var(--glass-hi), 0 0 0 1px var(--glass-ring), 0 10px 24px -16px var(--shadow);
 }
 .hero-chips a:hover { background: var(--glass-strong); border-color: var(--ink-2); }
-.card .card-outcome {
+.card .card-outcome, .case-strip-item {
   background: var(--glass);
   -webkit-backdrop-filter: var(--blur);
   backdrop-filter: var(--blur);
@@ -139,6 +139,8 @@ body::before {
   border-left: 4px solid var(--accent);
   box-shadow: inset 0 1px 0 var(--glass-hi), 0 10px 24px -18px var(--shadow);
 }
+.cs-details > summary { background: var(--glass-soft); border-color: var(--glass-edge); }
+.cs-details > summary:hover { background: var(--glass-strong); }
 
 /* ---------- Cards on the home page ---------- */
 .card-media {
@@ -177,7 +179,7 @@ body::before {
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   :root { --glass-a: 96%; --glass-a-strong: 98%; --glass-a-soft: 92%; }
   .mini, .stat, .note, .stages, .sens, .hero-side, .tbl-wrap, .fig-btn, .site-head .wrap, .case-bar,
-  .card-tag, .card .card-outcome, .band, .case-next, .hero-chips a, .hero .btn:not(.primary), .cs-body .btn:not(.primary) {
+  .card-tag, .card .card-outcome, .case-strip-item, .band, .case-next, .hero-chips a, .hero .btn:not(.primary), .cs-body .btn:not(.primary) {
     -webkit-backdrop-filter: none; backdrop-filter: none;
   }
   .band, .case-next { background: var(--ink); }
