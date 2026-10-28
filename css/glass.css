@@ -1,0 +1,170 @@
+/*
+  Glass theme (optional layer). Loaded after style.css and only restyles surfaces.
+  To turn it off: delete the <link> to css/glass.css in index.html, or `git revert` the commit that added it.
+
+  Idea: a soft, fixed color field (the site's own paper, orange, sage, butter, and rose tones)
+  sits behind everything. Panels are frosted glass over it, so content slides across the color as you scroll.
+  Safety nets: solid fallback without backdrop-filter, and for "reduce transparency" or "more contrast".
+*/
+
+:root {
+  /* How see-through panels are. Fallback blocks at the bottom raise these to near-solid. */
+  --glass-a: 46%;
+  --glass-a-strong: 72%;
+  --glass-a-soft: 30%;
+  --glass-tint: #ffffff;
+  --glass-edge: rgba(255, 255, 255, 0.7);
+  --glass-hi: rgba(255, 255, 255, 0.85);
+  --glass-ring: color-mix(in srgb, var(--ink) 8%, transparent);
+  --glass: color-mix(in srgb, var(--glass-tint) var(--glass-a), transparent);
+  --glass-strong: color-mix(in srgb, var(--glass-tint) var(--glass-a-strong), transparent);
+  --glass-soft: color-mix(in srgb, var(--glass-tint) var(--glass-a-soft), transparent);
+  --blur: blur(16px) saturate(165%);
+  --ambient:
+    radial-gradient(62vmax 52vmax at 6% 2%, rgba(255, 90, 31, 0.26), transparent 60%),
+    radial-gradient(56vmax 46vmax at 96% 26%, rgba(172, 223, 180, 0.6), transparent 62%),
+    radial-gradient(64vmax 52vmax at 18% 76%, rgba(246, 232, 166, 0.7), transparent 60%),
+    radial-gradient(52vmax 42vmax at 90% 94%, rgba(243, 184, 179, 0.6), transparent 62%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --glass-tint: #2a2620;
+    --glass-edge: rgba(255, 255, 255, 0.13);
+    --glass-hi: rgba(255, 255, 255, 0.09);
+    --glass-ring: rgba(255, 255, 255, 0.05);
+    --ambient:
+      radial-gradient(62vmax 52vmax at 6% 2%, rgba(255, 122, 69, 0.24), transparent 60%),
+      radial-gradient(56vmax 46vmax at 96% 26%, rgba(79, 150, 100, 0.3), transparent 62%),
+      radial-gradient(64vmax 52vmax at 18% 76%, rgba(160, 130, 40, 0.24), transparent 60%),
+      radial-gradient(52vmax 42vmax at 90% 94%, rgba(150, 70, 64, 0.28), transparent 62%);
+  }
+}
+:root[data-theme="dark"] {
+  --glass-tint: #2a2620;
+  --glass-edge: rgba(255, 255, 255, 0.13);
+  --glass-hi: rgba(255, 255, 255, 0.09);
+  --glass-ring: rgba(255, 255, 255, 0.05);
+  --ambient:
+    radial-gradient(62vmax 52vmax at 6% 2%, rgba(255, 122, 69, 0.24), transparent 60%),
+    radial-gradient(56vmax 46vmax at 96% 26%, rgba(79, 150, 100, 0.3), transparent 62%),
+    radial-gradient(64vmax 52vmax at 18% 76%, rgba(160, 130, 40, 0.24), transparent 60%),
+    radial-gradient(52vmax 42vmax at 90% 94%, rgba(150, 70, 64, 0.28), transparent 62%);
+}
+
+/* ---------- Color field behind everything ---------- */
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: -1;
+  background: var(--ambient);
+  pointer-events: none;
+}
+.case { background-color: var(--bg); background-image: var(--ambient); }
+
+/* ---------- Shared glass surface ---------- */
+.mini, .stat, .note, .stages, .sens, .hero-side, .tbl-wrap, .fig-btn {
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-hi), 0 0 0 1px var(--glass-ring), 0 14px 34px -18px var(--shadow);
+}
+.note { border-width: 1px; }
+.hero-side { padding: clamp(18px, 2.6vw, 28px); border-radius: 24px; }
+.stages, .sens { border-radius: 22px; }
+.mini, .stat { border-radius: 18px; }
+.tbl-wrap { border-radius: 16px; }
+.tbl thead th { background: var(--glass-soft); }
+.tbl th, .tbl td { border-bottom-color: color-mix(in srgb, var(--ink) 10%, transparent); }
+
+/* Inside a glass panel: lighter fills, no second blur (nested blur adds cost, not depth). */
+.stage-tab { background: var(--glass-soft); border-color: var(--glass-edge); }
+.stage-tab:hover { background: var(--glass); border-color: var(--ink-2); }
+.stage-tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); }
+.stage-change { background: var(--glass-soft); }
+.bar { background: var(--glass-soft); }
+
+/* ---------- Floating header ---------- */
+.site-head {
+  background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom: 0;
+  padding: 10px 12px 0;
+}
+.site-head .wrap {
+  max-width: calc(var(--max) + 2 * 32px);
+  min-height: 56px;
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-edge);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 var(--glass-hi), 0 0 0 1px var(--glass-ring), 0 14px 34px -16px var(--shadow);
+}
+.icon-btn { background: var(--glass-soft); border-color: var(--glass-edge); }
+.icon-btn:hover { background: var(--glass-strong); }
+
+/* ---------- Case study sheet bar ---------- */
+.case-bar {
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border-bottom-color: var(--glass-edge);
+  box-shadow: inset 0 -1px 0 var(--glass-ring);
+}
+.case-back { background: var(--glass-soft); border-color: var(--glass-edge); }
+.case-back:hover { background: var(--glass-strong); }
+
+/* ---------- Buttons (outside the dark band) ---------- */
+.hero .btn:not(.primary), .cs-body .btn:not(.primary) {
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border-color: color-mix(in srgb, var(--ink) 70%, transparent);
+  box-shadow: inset 0 1px 0 var(--glass-hi);
+}
+.hero .btn:not(.primary):hover, .cs-body .btn:not(.primary):hover { background: var(--glass-strong); }
+.btn.primary { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 10px 24px -12px color-mix(in srgb, var(--accent) 70%, transparent); }
+.hero-tags li { background: var(--glass-soft); border-color: var(--glass-edge); }
+
+/* ---------- Cards on the home page ---------- */
+.card-media {
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-hi), 0 0 0 1px var(--glass-ring), 0 22px 44px -26px var(--shadow);
+}
+.card-tag {
+  background: color-mix(in srgb, var(--glass-tint) 78%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(165%);
+  backdrop-filter: blur(12px) saturate(165%);
+  border: 1px solid var(--glass-edge);
+}
+.case-cover { border: 1px solid var(--glass-edge); box-shadow: 0 0 0 1px var(--glass-ring), 0 26px 50px -30px var(--shadow); }
+
+/* ---------- Dark band (resume + contact): frosted dark slab ---------- */
+.band {
+  margin: 0 12px 12px;
+  border-radius: 32px;
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 30px 60px -34px var(--shadow);
+}
+.case-next {
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+}
+
+/* ---------- Safety nets ---------- */
+/* No backdrop-filter support: use near-solid panels so text stays readable. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root { --glass-a: 94%; --glass-a-strong: 97%; --glass-a-soft: 88%; }
+}
+/* The visitor asked for less transparency or more contrast. */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root { --glass-a: 96%; --glass-a-strong: 98%; --glass-a-soft: 92%; }
+  .mini, .stat, .note, .stages, .sens, .hero-side, .tbl-wrap, .fig-btn, .site-head .wrap, .case-bar,
+  .card-tag, .band, .case-next, .hero .btn:not(.primary), .cs-body .btn:not(.primary) {
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+  .band, .case-next { background: var(--ink); }
+  .card-tag { background: var(--bg); }
+  body::before { opacity: 0.5; }
+}
