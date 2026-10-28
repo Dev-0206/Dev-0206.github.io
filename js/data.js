@@ -761,7 +761,7 @@ window.PROJECTS = [
     slug: "vacation-helper",
     title: "Vacation Helper",
     demo: "vacation-helper-demo/index.html",
-    outcome: "Working Flask app that ranks destinations by budget and trip length. Redesigned after class with scenic destinations and a compare view. Live weather, estimated prices.",
+    outcome: "Working Flask app that ranks destinations by budget and trip length. Redesigned after class with scenic destinations and a compare view; four friends tested it informally. Live weather, estimated prices.",
     decision: "I made each result show why it fits, for example a $180 estimated flight plus a $420 hotel, so people can check the math instead of trusting a rank.",
     tag: "Development",
     problem:
@@ -925,12 +925,68 @@ window.PROJECTS = [
           {
             t: "p",
             text:
-              "The original app, its logic, and its data are my own work from class. After the class, I directed a redesign using Claude as a coding assistant. I set the goals and tested the result. I have not run a usability test on the redesign yet.",
+              "The original app, its logic, and its data are my own work from class. After the class, I directed a redesign using Claude as a coding assistant. I set the goals and tested the result. I also ran a small informal test with friends, described below.",
           },
           {
             t: "p",
             text:
               "What did not change: prices are still estimates from a sample list, and the origin airport does not change them. The page now says so. The demo has no live weather, which needs the full Flask app.",
+          },
+        ],
+      },
+      {
+        id: "testing",
+        title: "Testing the redesign with four people",
+        open: true,
+        blocks: [
+          {
+            t: "p",
+            text:
+              "After the redesign I ran an informal test with friends, unmoderated and remote. Each person used the live demo on their own device and answered a short form after each task: find a trip for $1,000 and 3 nights, compare two places, see what one more night costs, and say how far they trust the prices. Five submissions came back. Two were identical and seconds apart, so I counted them once. That leaves four people: three on a phone and one on a laptop.",
+          },
+          {
+            t: "stats",
+            items: [
+              { value: "4 of 4", label: "found a trip in under 2 minutes" },
+              { value: "4 of 4", label: "used the compare view" },
+              { value: "5 of 5", label: "ease rating from every tester" },
+              { value: "3 to 5", label: "trust in the prices, out of 5" },
+            ],
+          },
+          {
+            t: "p",
+            text:
+              "I read the ease ratings with caution. The testers are friends, four people is too few to show a pattern, and I did not watch anyone, so I only know what they reported. What I trust more is where the answers disagreed.",
+          },
+          {
+            t: "note",
+            title: "Trust was uneven",
+            text:
+              "Two testers rated trust 3 and said prices can change at any time, and that the totals looked low for what they expected to do there. One rated it 5 and wrote only that they trust the website. That worries me more, because the prices are estimates. Three of the four noticed that the page says so.",
+          },
+          {
+            t: "note",
+            title: "The price did not cover what people expected",
+            text:
+              "One tester assumed the total would include activities. It covers a sample flight and hotel only. The page says taxes, food, and transport are not included, but the line is small and easy to miss.",
+          },
+          {
+            t: "note",
+            title: "What they asked for",
+            text:
+              "A link to book through an airline or hotel site. A breakdown of how the budget is spent. More destinations. More exact numbers.",
+          },
+          {
+            t: "note",
+            title: "What I will and will not change",
+            text:
+              "I have not changed the demo yet. Next I will make the price scope clearer on every result, add a budget breakdown, and link out to booking sites. One tester asked for decimals to make the numbers feel more accurate. I plan to leave them out, because the prices are estimates and extra digits would claim precision the data does not have.",
+          },
+          {
+            t: "note",
+            title: "A flaw in my test",
+            text:
+              "My form did not name which destination to use for the one-more-night task, so I cannot check those answers. Two of the four did not obviously match a one-night hotel price. Next time the task will name the place.",
           },
         ],
       },
@@ -959,7 +1015,7 @@ window.PROJECTS = [
             items: [
               "Replace the estimates with live flight and hotel data.",
               "Go beyond vibe filters with preferences such as climate or pace.",
-              "Test the redesigned results with real trip planners. It has not been tested yet.",
+              "Run a moderated test with people I do not know, and fix the gaps the first test showed: price scope, booking links, and a budget breakdown.",
               "Deploy it so people can try it without running Python.",
             ],
           },
