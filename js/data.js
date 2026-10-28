@@ -978,9 +978,9 @@ window.PROJECTS = [
           },
           {
             t: "note",
-            title: "What I will and will not change",
+            title: "What I changed and what I left out",
             text:
-              "I have not changed the demo yet. Next I will make the price scope clearer on every result, add a budget breakdown, and link out to booking sites. One tester asked for decimals to make the numbers feel more accurate. I plan to leave them out, because the prices are estimates and extra digits would claim precision the data does not have.",
+              "After the test I added a line to every result saying the price covers a flight and hotel only, a budget breakdown on each destination, and links to Google Flights and Google Hotels, where current prices live. I have not retested these changes. One tester asked for decimals to make the numbers feel more accurate. I left them out, because the prices are estimates and extra digits would claim precision the data does not have.",
           },
           {
             t: "note",
@@ -1015,7 +1015,7 @@ window.PROJECTS = [
             items: [
               "Replace the estimates with live flight and hotel data.",
               "Go beyond vibe filters with preferences such as climate or pace.",
-              "Run a moderated test with people I do not know, and fix the gaps the first test showed: price scope, booking links, and a budget breakdown.",
+              "Retest the changes with people I do not know, in moderated sessions, and add more destinations.",
               "Deploy it so people can try it without running Python.",
             ],
           },
