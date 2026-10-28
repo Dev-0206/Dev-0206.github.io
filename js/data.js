@@ -760,7 +760,7 @@ window.PROJECTS = [
   {
     slug: "vacation-helper",
     title: "Vacation Helper",
-    outcome: "Working Flask app that ranks destinations by budget and trip length. Live weather, estimated prices.",
+    outcome: "Working Flask app that ranks destinations by budget and trip length. Redesigned after class with scenic destinations and a compare view. Live weather, estimated prices.",
     decision: "I made each result show why it fits, for example a $180 estimated flight plus a $420 hotel, so people can check the math instead of trusting a rank.",
     tag: "Development",
     problem:
@@ -784,7 +784,7 @@ window.PROJECTS = [
             text:
               "Vacation Helper takes an origin airport, a budget, and a number of nights. It returns a ranked list of destinations with estimated total cost and a plain sentence on why each one fits. Each result opens a detail page with the current weather.",
           },
-          { t: "links", items: [{ label: "View the code on GitHub", href: "https://github.com/Dev-0206/Vacation-Helper" }] },
+          { t: "links", items: [{ label: "Redesigned version on GitHub", href: "https://github.com/Dev-0206/Vacation-Helper" }, { label: "Original class version", href: "https://github.com/Dev-0206/Vacation-Helper/tree/class-submission" }] },
         ],
       },
       {
@@ -866,7 +866,7 @@ window.PROJECTS = [
       },
       {
         id: "design",
-        title: "Screens",
+        title: "Screens (class version)",
         blocks: [
           {
             t: "figs",
@@ -882,6 +882,54 @@ window.PROJECTS = [
             src: "assets/img/vh-results.webp",
             alt: "Results page for SEA with a $1,200 budget and 5 nights, showing Las Vegas and Salt Lake City with flight cost, hotel cost, total cost, status, and a reason sentence.",
             caption: "Results for SEA, $1,200, 5 nights.",
+          },
+        ],
+      },
+      {
+        id: "after-class",
+        title: "After the class: redesign",
+        open: true,
+        blocks: [
+          {
+            t: "p",
+            text:
+              "The class ended with a working app and a plain interface. I kept working on it afterward because the results page did not yet feel like planning a trip. The original version stays on its own branch, so you can compare the two.",
+          },
+          {
+            t: "list",
+            items: [
+              "Each destination has its own illustrated scene as a background, so a result looks like a place instead of a row.",
+              "The home form shows how many destinations fit as you change the budget or nights, before you submit.",
+              "Results can be filtered by vibe (beach, food, outdoors), sorted, and compared side by side, up to three at a time.",
+              "A nights slider on each destination recalculates the total and shows what is left of the budget.",
+              "Fixes: bad input is clamped instead of breaking a page, the origin airport is removed from the list, and the weather loads separately so a slow API no longer blocks the page.",
+              "Accessibility: keyboard focus, labelled controls, dark mode, and reduced-motion support.",
+            ],
+          },
+          {
+            t: "figs",
+            cols: 2,
+            items: [
+              { src: "assets/img/vh2-home.webp", alt: "Redesigned Vacation Helper home screen over a night city scene, with airport, budget, nights, and vibe chips, and a line saying how many destinations fit.", caption: "Home, with live feedback." },
+              { src: "assets/img/vh2-det.webp", alt: "Redesigned Las Vegas destination page with a neon city scene and a trip cost panel.", caption: "Destination, with a nights slider." },
+            ],
+          },
+          {
+            t: "fig",
+            wide: true,
+            src: "assets/img/vh2-res.webp",
+            alt: "Redesigned results page with filter chips and cards that each show an illustrated scene, estimated total, flight and hotel split, and money left.",
+            caption: "Results for SEA, $1,200, 5 nights.",
+          },
+          {
+            t: "p",
+            text:
+              "How I built it: I directed the redesign and tested it, and I used Claude to write most of the new templates, CSS, JavaScript, and the script that generates the scenes. The class version used AI only for formatting, and the repository's ai.txt describes both. I have not run a usability test on the redesign yet, so I cannot say it is easier to use, only that it does more.",
+          },
+          {
+            t: "p",
+            text:
+              "What did not change: prices are still estimates from a sample list, and the origin airport does not change them. The page now says so.",
           },
         ],
       },
@@ -909,8 +957,8 @@ window.PROJECTS = [
             t: "list",
             items: [
               "Replace the estimates with live flight and hotel data.",
-              "Add a preferences input, since the app does not take one yet.",
-              "Redesign the results as scannable cards and test them with real planners.",
+              "Go beyond vibe filters with preferences such as climate or pace.",
+              "Test the redesigned results with real trip planners. It has not been tested yet.",
               "Deploy it so people can try it without running Python.",
             ],
           },
