@@ -519,3 +519,12 @@ noscript .wrap { padding-block: 20px; }
 .card-live::after { content: "\2197"; margin-left: 8px; color: var(--accent); }
 .card-live:hover { background: var(--ink); color: var(--bg); text-decoration: none; }
 .card-live:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Mobile header + title focus fixes */
+.brand { white-space: nowrap; }
+#case-title:focus { outline: none; }
+@media (max-width: 420px) {
+  .brand { font-size: 1.2rem; gap: 8px; }
+  .nav { gap: 10px; font-size: 0.9rem; }
+}
+@media (max-width: 340px) { .brand-dot { display: none; } .nav { gap: 6px; font-size: 0.84rem; } }
