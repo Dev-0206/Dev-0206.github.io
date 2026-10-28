@@ -924,7 +924,7 @@ window.PROJECTS = [
           {
             t: "p",
             text:
-              "How I built it: I used Claude to vibe code the redesign to my direction, and I tested it myself. The class version used AI only for formatting, and the repository's ai.txt describes both. I have not run a usability test on the redesign yet, so I cannot say it is easier to use, only that it does more.",
+              "The original app, its logic, and its data are my own work from class. After the class, I directed a redesign using Claude as a coding assistant. I set the goals and tested the result. I have not run a usability test on the redesign yet.",
           },
           {
             t: "p",
