@@ -79,6 +79,7 @@
   S.about.facts.forEach(function (f) { af.appendChild(el("div", null, [el("dt", { text: f.label }), el("dd", { text: f.value })])); });
 
   $("#c-email").textContent = S.email; $("#c-email").setAttribute("href", "mailto:" + S.email);
+  var mb = $("#c-mail-btn"); if (mb) mb.setAttribute("href", "mailto:" + S.email);
   $("#c-li").setAttribute("href", S.linkedin);
   var links = $("#c-links");
   links.appendChild(el("a", { class: "btn", href: S.linkedin, target: "_blank", rel: "noopener", text: "LinkedIn" }));

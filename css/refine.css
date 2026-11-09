@@ -101,3 +101,10 @@
   .card-live { transition: background .2s, color .2s, transform .15s; }
   .card-live:active { transform: scale(.97); }
 }
+
+/* ===== 5. One closing band ===== */
+.band .two-col.close { align-items: end; }
+.band .email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px; }
+.band .contact-line { margin-bottom: 20px; }
+.band .links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-start; }
+@media (min-width: 860px) { .band .links { justify-content: flex-end; } }
