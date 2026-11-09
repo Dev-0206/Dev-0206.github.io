@@ -51,7 +51,7 @@
 
   var grid = $("#work-grid");
   P.forEach(function (p) {
-    var a = el("a", { class: "card", id: "card-" + p.slug, href: "#/work/" + p.slug, "data-slug": p.slug, "aria-label": p.title + ". " + (p.outcome ? p.outcome + " " : "") + p.problem }, [
+    var a = el("a", { class: "card", id: "card-" + p.slug, href: "#/work/" + p.slug, "data-slug": p.slug }, [
       el("div", { class: "card-media" }, [
         el("img", { src: p.cover, alt: p.coverAlt, loading: "lazy", decoding: "async", class: p.coverFit === "contain" ? "contain" : "cover", style: p.coverPos ? "object-position:" + p.coverPos : null }),
         el("span", { class: "card-tag", text: p.tag }),
@@ -65,7 +65,7 @@
       ]),
     ]);
     if (p.demo) {
-      var wrap = el("div", { class: "card-wrap" }, [a, el("a", { class: "card-live", href: p.demo, text: "Try it live", "aria-label": "Try " + p.title + " live (opens the working demo)" })]);
+      var wrap = el("div", { class: "card-wrap" }, [a, el("a", { class: "card-live", href: p.demo, text: "Try it live", "aria-label": "Try it live: " + p.title + " demo (opens the working demo)" })]);
       grid.appendChild(wrap);
     } else if (p.tryModel) {
       var wrap2 = el("div", { class: "card-wrap" }, [a, el("a", { class: "card-live", href: "#/work/" + p.slug, "data-scroll": "#sens-h", text: "Try the model", "aria-label": "Try the model. Opens " + p.title + " at the interactive slider." })]);
@@ -297,7 +297,7 @@
     inner.appendChild(back); inner.appendChild(pos); inner.appendChild(nav);
     bar.appendChild(inner); caseEl.appendChild(bar);
 
-    var hero = el("header", { class: "case-hero" });
+    var hero = el("div", { class: "case-hero" });
     var hw = el("div", { class: "wrap" });
     hw.appendChild(el("span", { class: "tagline", text: p.tag }));
     var h1 = el("h1", { id: "case-title", tabindex: "-1", text: p.title });

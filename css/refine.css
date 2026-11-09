@@ -113,3 +113,28 @@
   border: 1px solid rgba(255,255,255,.25); box-shadow: 0 24px 48px -28px rgba(0,0,0,.7);
 }
 @media (min-width: 860px) { .band .close-side { justify-items: end; } .band .links { justify-content: flex-end; } }
+
+/* ===== Calmer background: ambient color at about half strength (keeps orange as the accent) ===== */
+:root {
+  --ambient:
+    radial-gradient(62vmax 52vmax at 6% 2%, rgba(255, 90, 31, 0.13), transparent 60%),
+    radial-gradient(56vmax 46vmax at 96% 26%, rgba(172, 223, 180, 0.3), transparent 62%),
+    radial-gradient(64vmax 52vmax at 18% 76%, rgba(246, 232, 166, 0.35), transparent 60%),
+    radial-gradient(52vmax 42vmax at 90% 94%, rgba(243, 184, 179, 0.3), transparent 62%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ambient:
+      radial-gradient(62vmax 52vmax at 6% 2%, rgba(255, 122, 69, 0.12), transparent 60%),
+      radial-gradient(56vmax 46vmax at 96% 26%, rgba(79, 150, 100, 0.15), transparent 62%),
+      radial-gradient(64vmax 52vmax at 18% 76%, rgba(160, 130, 40, 0.12), transparent 60%),
+      radial-gradient(52vmax 42vmax at 90% 94%, rgba(150, 70, 64, 0.14), transparent 62%);
+  }
+}
+:root[data-theme="dark"] {
+  --ambient:
+    radial-gradient(62vmax 52vmax at 6% 2%, rgba(255, 122, 69, 0.12), transparent 60%),
+    radial-gradient(56vmax 46vmax at 96% 26%, rgba(79, 150, 100, 0.15), transparent 62%),
+    radial-gradient(64vmax 52vmax at 18% 76%, rgba(160, 130, 40, 0.12), transparent 60%),
+    radial-gradient(52vmax 42vmax at 90% 94%, rgba(150, 70, 64, 0.14), transparent 62%);
+}
