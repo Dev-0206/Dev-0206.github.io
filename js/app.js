@@ -68,7 +68,7 @@
       var wrap = el("div", { class: "card-wrap" }, [a, el("a", { class: "card-live", href: p.demo, text: "Try it live", "aria-label": "Try " + p.title + " live (opens the working demo)" })]);
       grid.appendChild(wrap);
     } else if (p.tryModel) {
-      var wrap2 = el("div", { class: "card-wrap" }, [a, el("a", { class: "card-live", href: "#/work/" + p.slug, "data-scroll": "#sens-h", text: "Try the model", "aria-label": "Try the " + p.title + " model: open the case study at the interactive sensitivity slider" })]);
+      var wrap2 = el("div", { class: "card-wrap" }, [a, el("a", { class: "card-live", href: "#/work/" + p.slug, "data-scroll": "#sens-h", text: "Try the model", "aria-label": "Try the model. Opens " + p.title + " at the interactive slider." })]);
       grid.appendChild(wrap2);
     } else grid.appendChild(a);
   });

@@ -19,10 +19,9 @@
     P.forEach(function (p, i) {
       var a = document.createElement("a");
       a.className = "hv-slide"; a.href = "#/work/" + p.slug;
-      a.setAttribute("aria-label", p.title + ". Open case study.");
       var f = document.createElement("div"); f.className = "media-frame";
       var img = document.createElement("img");
-      img.src = p.cover; img.alt = p.coverAlt || ""; img.decoding = "async";
+      img.src = p.cover; img.alt = ""; img.decoding = "async";
       if (i > 0) img.loading = "lazy";
       f.appendChild(img); a.appendChild(f);
       var cap = document.createElement("span"); cap.className = "hv-cap";
