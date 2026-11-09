@@ -103,8 +103,13 @@
 }
 
 /* ===== 5. One closing band ===== */
-.band .two-col.close { align-items: end; }
+.band .two-col.close { align-items: center; }
 .band .email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px; }
 .band .contact-line { margin-bottom: 20px; }
-.band .links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-start; }
-@media (min-width: 860px) { .band .links { justify-content: flex-end; } }
+.band .close-side { display: grid; gap: 18px; justify-items: start; }
+.band .links { display: flex; flex-wrap: wrap; gap: 12px; }
+.band .me {
+  width: min(100%, 240px); height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.25); box-shadow: 0 24px 48px -28px rgba(0,0,0,.7);
+}
+@media (min-width: 860px) { .band .close-side { justify-items: end; } .band .links { justify-content: flex-end; } }
