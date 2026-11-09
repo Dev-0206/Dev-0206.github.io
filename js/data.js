@@ -56,6 +56,7 @@ window.PROJECTS = [
   /* ------------------------------------------------------------------ */
   {
     slug: "second-spin",
+    tryModel: true,
     title: "Second Spin",
     outcome: "Modeled about 80% less CO2 than pressing new vinyl. Service tested with six classmates; restamping itself is unproven.",
     decision: "I designed the service around reusing the record itself, not only recycling the material, because new PVC is the largest source of emissions in our assessment.",

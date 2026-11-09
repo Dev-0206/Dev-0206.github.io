@@ -66,4 +66,40 @@
     wrap.appendChild(stage); wrap.appendChild(ctrl); host.appendChild(wrap);
     show(0); label(); start();
   }
+
+  /* ---------- 4. Scroll reveal and reading progress ---------- */
+  var caseEl = document.getElementById("case");
+  var bar = document.querySelector("#read-progress i");
+  if (caseEl && bar) {
+    var raf = 0;
+    var upd = function () {
+      raf = 0;
+      var max = caseEl.scrollHeight - caseEl.clientHeight;
+      bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, caseEl.scrollTop / max) : 0) + ")";
+    };
+    caseEl.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+    new MutationObserver(upd).observe(caseEl, { childList: true });
+  }
+
+  if (!reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (e) {
+        if (e.isIntersecting || e.boundingClientRect.top < 0) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
+    var seen = typeof WeakSet === "function" ? new WeakSet() : null;
+    var arm = function (root) {
+      var list = (root || document).querySelectorAll(".card-wrap, .work-grid > .card, .cs-row, .case-strip-item, .about-grid, .band .two-col");
+      var n = 0;
+      Array.prototype.forEach.call(list, function (el) {
+        if (seen && seen.has(el)) return;
+        if (seen) seen.add(el);
+        el.classList.add("rv");
+        el.style.setProperty("--rv-d", (n++ % 2) * 80 + "ms");
+        io.observe(el);
+      });
+    };
+    arm(document);
+    if (caseEl) new MutationObserver(function () { arm(caseEl); }).observe(caseEl, { childList: true });
+  }
 })();

@@ -67,6 +67,9 @@
     if (p.demo) {
       var wrap = el("div", { class: "card-wrap" }, [a, el("a", { class: "card-live", href: p.demo, text: "Try it live", "aria-label": "Try " + p.title + " live (opens the working demo)" })]);
       grid.appendChild(wrap);
+    } else if (p.tryModel) {
+      var wrap2 = el("div", { class: "card-wrap" }, [a, el("a", { class: "card-live", href: "#/work/" + p.slug, "data-scroll": "#sens-h", text: "Try the model", "aria-label": "Try the " + p.title + " model: open the case study at the interactive sensitivity slider" })]);
+      grid.appendChild(wrap2);
     } else grid.appendChild(a);
   });
 
@@ -95,7 +98,7 @@
 
   /* ---------- Case study rendering ---------- */
   var caseEl = $("#case");
-  var lastTrigger = null;
+  var lastTrigger = null, pendingScroll = null;
   var baseTitle = document.title;
 
   function fig(b, inGrid) {
@@ -360,6 +363,14 @@
     document.title = p.title + " | " + S.name;
     var h = $("#case-title");
     if (h) h.focus({ preventScroll: true });
+    if (pendingScroll) {
+      var sel = pendingScroll; pendingScroll = null;
+      var jump = function () {
+        var t = caseEl.querySelector(sel);
+        if (t) caseEl.scrollTop = t.getBoundingClientRect().top - caseEl.getBoundingClientRect().top + caseEl.scrollTop - 90;
+      };
+      jump(); setTimeout(jump, 450);
+    }
     if (!wasOpen) lastTrigger = document.querySelector('.card[data-slug="' + slug + '"]') || lastTrigger;
   }
   function closeCase() {
@@ -386,6 +397,15 @@
   }
   window.addEventListener("hashchange", function () { route(); });
   grid.addEventListener("click", function (e) {
+    var tl = e.target.closest && e.target.closest(".card-live[data-scroll]");
+    if (tl && !(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1)) {
+      e.preventDefault();
+      pendingScroll = tl.getAttribute("data-scroll");
+      lastTrigger = tl;
+      lastRouted = null;
+      go(tl.getAttribute("href"));
+      return;
+    }
     var a = e.target.closest && e.target.closest(".card");
     if (!a) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;

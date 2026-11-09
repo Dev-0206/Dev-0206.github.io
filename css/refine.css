@@ -84,3 +84,20 @@
   .case-hero .case-cover { order: 4; margin-top: 24px; }
   .case-hero .meta { order: 5; }
 }
+
+/* ===== 4. Motion (all of it off under prefers-reduced-motion) ===== */
+.read-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; display: none; pointer-events: none; }
+.case.open ~ .read-progress { display: block; }
+.read-progress i { display: block; height: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+@media (prefers-reduced-motion: no-preference) {
+  .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); transition-delay: var(--rv-d, 0ms); }
+  .rv.in { opacity: 1; transform: none; }
+  .card .card-media { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+  .card:hover .card-media, .card:focus-visible .card-media { transform: translateY(-5px); }
+  .hero-chips a { transition: transform .2s cubic-bezier(.2,.7,.2,1), background .2s, border-color .2s; }
+  .hero-chips a:hover { transform: translateY(-2px); }
+  .btn { transition: transform .15s, background .2s, border-color .2s, box-shadow .2s; }
+  .btn:active { transform: scale(.97); }
+  .card-live { transition: background .2s, color .2s, transform .15s; }
+  .card-live:active { transform: scale(.97); }
+}
