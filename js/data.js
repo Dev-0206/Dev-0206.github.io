@@ -830,6 +830,11 @@ window.PROJECTS = [
             text:
               "Second Spin is a service concept. Record stores collect damaged and unwanted records. We clean them, repair them, or restamp them with new music, and sell them in recycled paper sleeves. The aim is to keep records out of landfill and cut the need for new virgin PVC.",
           },
+          {
+            t: "p",
+            text:
+              "My part: research, design thinking, and prototyping. I mapped the process flow and service journey, and helped prototype the three-path intake form (donate, repair, reprint) in Figma.",
+          },
         ],
       },
       {
