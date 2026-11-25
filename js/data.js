@@ -510,6 +510,41 @@ window.PROJECTS = [
         ],
       },
       {
+        id: "hifi",
+        title: "After the class: flavor page and shop locator",
+        open: true,
+        blocks: [
+          {
+            t: "p",
+            text:
+              "The class ended with the flavor page and shop locator as wireframes. Afterward, I asked Claude, an AI assistant, to draft both screens at full fidelity in Figma from my brief, competitor review, and wireframes. The screens below are that first draft. They use my palette roles and type, plus darker shades of aqua and raspberry for contrast. Shop names, hours, stock, and the map are sample content.",
+          },
+          {
+            t: "list",
+            items: [
+              "The flavor page answers four questions in order: what it is, whether you can eat it, where to get it, and how long it is around.",
+              "A Where to get it card shows how many shops have the flavor and the nearest open one, and opens the locator with that flavor filter already on. This is the gap I found in the Sweet Alchemy review.",
+              "The locator filters by flavor and by open now, so you can see what is in stock before the trip.",
+              "Buttons, links, and map pins use a darker aqua (5.2:1 with white) and raspberry (5.4:1), which fixes the weak button contrast from the class version.",
+            ],
+          },
+          {
+            t: "fig",
+            wide: true,
+            src: "assets/img/mm-hifi-detail.webp",
+            alt: "Flavor page for Blueberry Fusion: a tilted Polaroid-style illustration of a blue scoop on a cone, a Seasonal through Jan 31 badge, dairy-free and vegan labels, an allergen note, and a card saying the flavor is in 4 of 7 shops with a Find a shop with this flavor button. Three related flavor cards sit below.",
+            caption: "Flavor page. Full-fidelity draft by Claude from my brief and wireframes.",
+          },
+          {
+            t: "fig",
+            wide: true,
+            src: "assets/img/mm-hifi-locator.webp",
+            alt: "Find a shop page with a search field, a Use my location button, and a selected Has Blueberry Fusion filter. A list of four shops with distance, hours, and stock sits beside an illustrated map of Seattle with numbered pins.",
+            caption: "Shop locator. Full-fidelity draft by Claude. Shop data and the map are sample content.",
+          },
+        ],
+      },
+      {
         id: "limits",
         title: "Limitations",
         blocks: [
@@ -519,7 +554,7 @@ window.PROJECTS = [
               "I did not test this with users. The evidence is the weekly group and professor critique described above, and the changes it led to.",
               "The cards group flavors into three columns, but they are not filters. Someone who wants a flavor that is both vegan and nut-free cannot ask for it.",
               "The grey View Flavors buttons have weak contrast against the pastel cards.",
-              "The flavor detail page and shop locator exist only as wireframes.",
+              "The full-fidelity flavor page and shop locator are a first draft by Claude and have not been tested with users.",
             ],
           },
         ],
@@ -545,7 +580,7 @@ window.PROJECTS = [
               "Test with people who have dietary restrictions.",
               "Replace the grouped columns with real filters that can combine.",
               "Raise button contrast.",
-              "Design the flavor detail page and shop locator in high fidelity. They exist only as wireframes.",
+              "Rework the full-fidelity flavor page and shop locator draft, then test both screens.",
             ],
           },
         ],
