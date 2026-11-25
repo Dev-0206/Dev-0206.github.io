@@ -228,7 +228,7 @@ window.PROJECTS = [
           {
             t: "p",
             text:
-              "After the redesign I ran an informal test with friends, unmoderated and remote. Each person used the live demo on their own device and answered a short form after each task: find a trip for $1,000 and 3 nights, compare two places, see what one more night costs, and say how far they trust the prices. Five submissions came back. Two were identical and seconds apart, so I counted them once. That leaves four people: three on a phone and one on a laptop.",
+              "After the redesign I ran an informal test with friends of friends, unmoderated and remote. Each person used the live demo on their own device and answered a short form after each task: find a trip for $1,000 and 3 nights, compare two places, see what one more night costs, and say how far they trust the prices. Five submissions came back. Two were identical and seconds apart, so I counted them once. That leaves four people: three on a phone and one on a laptop.",
           },
           {
             t: "stats",
@@ -242,7 +242,7 @@ window.PROJECTS = [
           {
             t: "p",
             text:
-              "Everyone rated ease 5 out of 5. I discount that: the testers are friends, four people is too few to show a pattern, and I did not watch anyone, so I only know what they reported. What I trust more is where the answers disagreed.",
+              "Everyone rated ease 5 out of 5. I discount that: the testers are friends of friends, four people is too few to show a pattern, and I did not watch anyone, so I only know what they reported. What I trust more is where the answers disagreed.",
           },
           {
             t: "note",
@@ -289,7 +289,7 @@ window.PROJECTS = [
           {
             t: "list",
             items: [
-              "The testers were friends, and four people is too few to show a pattern.",
+              "The testers were friends of friends, not a random sample, and four people is too few to show a pattern.",
               "The test was unmoderated, so I only know what people reported, not what they did.",
               "My form did not name which destination to use for the one-more-night task, so I cannot check those answers. Next time the task will name the place.",
               "I have not retested the changes above.",
